@@ -15,7 +15,7 @@ import it.corso.service.TurnoService;
 
 
 @Controller
-@RequestMapping("/logged")
+@RequestMapping("logged")
 public class loggedController {
 	@Autowired
 	private AttivitaService attivitaService;
@@ -36,7 +36,7 @@ public class loggedController {
 		model.addAttribute("turno", turno);
 		
 		
-		return "logged";
+		return "/logged";
 	}
 
 }

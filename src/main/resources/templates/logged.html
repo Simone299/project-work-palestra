@@ -6,14 +6,16 @@
 	
 
 </head>
+
+<!-- è questa pagina? -->
 <body>
 
-    <!-- Header con il logo della palestra e il menu di navigazione -->
+    
     <header>
         <img src="download.jpg" alt="Logo della palestra" id="logo">
         <nav>
             <ul>
-                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/logged}">Home</a></li>
                 <li><a href="#">Attività</a></li>
                 <li><a href="#">Calendario</a></li>
                 <li><a href="#">Contatti</a></li>
@@ -49,10 +51,10 @@
                     <th>Orario</th>
                 </tr>
             </thead>
-            <tbody th:each="t : ${turni}">
-                <tr>
+            <tbody >
+                <tr th:each="t : ${turni}">
                     <td th:text="${t.giorno_settimana}">Lunedi</td>
-                 	<td th:text=${t.attivita.titolo}></td>
+                 	<td th:text="${t.attivita.titolo}"></td>
                     <td th:text="${t.fascia_oraria}">10:00 - 11:00</td>
                     
                 </tr>

@@ -53,6 +53,7 @@
 			
         </form>
         <div    th:if="${errore}"   th:text="'Utente già esistente'" style="color:red"></div>
+        <div    th:if="${ceck}"   th:text="'Utente registrato! Effettua il login'" style="color:green"></div>
 		<h2 id="testo2">Clicca i Manubri per registrarti</h2>
 	</section>
 
@@ -88,6 +89,7 @@
 
             <input type="submit" value="Accedi">
         </form>
+        <div    th:if="${errore3}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:red"></div>
 		<h2 id="testo7">Clicca staff per entrare</h2>
     </section>
 
@@ -97,9 +99,9 @@
 		<div class="card-img">
 			<img src="images.jpg" alt="Immagine 1">
 		</div>
-		<div class="card-body" th:each="attivita : ${catalogo}">
-			<h5> class="card-title" th:text="${attivita.titolo}"></h5>
-			<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
+		<div class="card-body" th:each="a : ${attivita}">
+			<h5 th:text="${a.titolo}"> class="card-title" ></h5>
+			<p class="card-text" th:text="${a.descrizione}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
 			<button class="info-btn">Più info</button>
 		</div>
 	</div>
@@ -107,9 +109,9 @@
 		<div class="card-img">
 			<img src="images.jpg" alt="Immagine 1">
 		</div>
-		<div class="card-body" th:each="attivita : ${catalogo}">
-			<h5 th:text="${attivita.titolo}">Titolo Attività</h5>
-			<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
+		<div class="card-body" th:each="a : ${attivita}">
+			<h5 th:text="${a.titolo}">Titolo Attività</h5>
+			<p class="card-text" th:text="${a.titolo}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
 			<button class="info-btn">Più info</button>
 		</div>
 	</div>
@@ -125,21 +127,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Lunedi</td>
-                    <td>Crossfit</td>
-                    <td>10:00 - 11:00</td>
+                <tr th:each="t : ${turni}">
+                    <td th:text="${t.giorno_settimana}">Lunedi</td>
+                    <td th:text="${t.attivita.titolo}">Crossfit</td>
+                    <td th:text=${t.fascia_oraria}>10:00 - 11:00</td>
                 </tr>
-                <tr>
-                    <td>Martedi</td>
-                    <td>Pilates</td>
-                    <td>16:00 - 17:00</td>
-                </tr>
-                <tr>
-                    <td>Mercoledi</td>
-                    <td>Yoga</td>
-                    <td>18:00 - 19:00</td>
-                </tr>
+              
                 <!-- aggiungi qui altre righe con le attività -->
             </tbody>
         </table>
