@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Palestra Fitness</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	
+
+</head>
+<body>
+
+    <!-- Header con il logo della palestra e il menu di navigazione -->
+    <header>
+        <img src="download.jpg" alt="Logo della palestra" id="logo">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Attività</a></li>
+                <li><a href="#">Calendario</a></li>
+                <li><a href="#">Contatti</a></li>
+				<li><a href="#">Area Riservata</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Form per la registrazione e l'accesso -->
+    <section class="sezione">
+        <h2 id="testo">Registrazione</h2>
+		
+		<img id="manubrio" src="images.jpg" alt="Manubrio">
+        <form id="mio-form"  method="post" th:object="${utente}" >
+			<h2>Registrazione</h2>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" th:field="*{nome_utente}" required><br>
+            <p th:if="${#fields.hasErrors('nome_utente')}" th:errors="*{nome_utente}" style="color:red"></p>
+
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" th:field="*{cognome_utente}" required><br>
+            <p th:if="${#fields.hasErrors('cognome_utente')}" th:errors="*{cognome_utente}" style="color:red"></p>
+            <label for="codice fiscale">Codice fiscale:</label>
+            <input type="text" id="codice fiscale" name="codice fiscale" th:field="*{codice_fiscale}" required><br>
+            <p th:if="${#fields.hasErrors('codice_fiscale')}" th:errors="*{codice_fiscale}" style="color:red"></p>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:field="*{email}" required><br>
+             <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red"></p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" th:field="*{password}" required><br>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red"></p>
+              <label for="password">username:</label>
+            <input type="password" id="username" name="username" th:field="*{username}" required><br>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color:red"></p>
+            <input type="submit" value="Registrati">
+			
+        </form>
+        <div    th:if="${errore}"   th:text="'Utente già esistente'" style="color:red"></div>
+		<h2 id="testo2">Clicca i Manubri per registrarti</h2>
+	</section>
+
+	<section class="sezione">
+		<h2 id="testo3">Login</h2>
+		<img id="logo2" src="download.jpg" alt="Logo">
+        <form id="accesso" method="post" action="loginUtente" >
+			<h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"   required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"   required ><br>
+
+            <input type="submit" value="Accedi">
+        </form>
+        <div    th:if="${errore2}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:red"></div>
+        <!-- vedi login.htm  esercizio6 -->
+		<h2 id="testo5">Clicca il logo per il login</h2>
+    </section>
+
+    <!-- Form per l'accesso degli amministratori -->
+    <section class="sezione">
+        <h2 id="testo6">Area Riservata</h2>
+		<img id="staff" src="staff.jpg" alt="Staff">
+        <form id="altroform" method="post" action="loginAdmin" >
+			<h2>Area Riservata</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br>
+
+            <input type="submit" value="Accedi">
+        </form>
+		<h2 id="testo7">Clicca staff per entrare</h2>
+    </section>
+
+	<div class="tit"><h2 class="tit">ELENCO ATTIVITA</h2></div>
+
+	<div class="card">
+		<div class="card-img">
+			<img src="images.jpg" alt="Immagine 1">
+		</div>
+		<div class="card-body" th:each="attivita : ${catalogo}>
+			<h5> class="card-title" th:text="${attivita.titolo}"></h5>
+			<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
+			<button class="info-btn">Più info</button>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-img">
+			<img src="images.jpg" alt="Immagine 1">
+		</div>
+		<div class="card-body" th:each="attivita : ${catalogo}>
+			<h5 th:text="${attivita.titolo}">Titolo Attività</h5>
+			<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
+			<button class="info-btn">Più info</button>
+		</div>
+	</div>
+
+    <div class="calendario">
+        <h2 id="testo4">Calendario Attività</h2>
+        <table class="tab-calendario">
+            <thead>
+                <tr>
+                    <th>Giorno</th>
+                    <th>Attività</th>
+                    <th>Orario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lunedi</td>
+                    <td>Crossfit</td>
+                    <td>10:00 - 11:00</td>
+                </tr>
+                <tr>
+                    <td>Martedi</td>
+                    <td>Pilates</td>
+                    <td>16:00 - 17:00</td>
+                </tr>
+                <tr>
+                    <td>Mercoledi</td>
+                    <td>Yoga</td>
+                    <td>18:00 - 19:00</td>
+                </tr>
+                <!-- aggiungi qui altre righe con le attività -->
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <div class="footer-info">
+            <h4 id="gym">Space Gym</h4>
+            <p id="indirizzi">Via della Palestra, 1 - 00100 Roma</p>
+            <p id="contatti">Tel: +39 06 1234567 - Email: info@spacegym.it</p>
+            <p></p>
+        </div>
+        <div class="footer-social">
+            <h4>Seguici su</h4>
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+        </div>
+        <div class="footer-credits">
+            <p>© 2023 Space Gym. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+
+	
+	<script>
+       	const manubrio = document.querySelector('#manubrio');
+		const mioForm = document.querySelector('#mio-form');
+		const testo = document.getElementById("testo")
+		const testo2 = document.getElementById("testo2")
+
+
+		manubrio.addEventListener('click', function() {
+		manubrio.style.display = 'none';  // nasconde l'immagine del manubrio
+		mioForm.style.display = 'flex';  // mostra il form display:
+		testo.style.display = 'none';
+		testo2.style.display = 'none';
+		});
+
+		
+        const logo2 = document.querySelector('#logo2');
+        const accesso = document.querySelector('#accesso');
+        const testo3 = document.getElementById("testo3")
+        const testo5 = document.getElementById("testo5")
+
+
+        logo2.addEventListener('click', function() {
+        logo2.style.display = 'none';  // nasconde l'immagine del manubrio
+        accesso.style.display = 'flex';  // mostra il form display:
+        testo3.style.display = 'none';
+        testo5.style.display = 'none';
+        });
+
+     
+
+
+
+        const staff = document.querySelector('#staff');
+        const altroform = document.querySelector('#altroform');
+        const testo6 = document.getElementById("testo6")
+        const testo7 = document.getElementById("testo7")
+
+
+        staff.addEventListener('click', function() {
+        staff.style.display = 'none';  // nasconde l'immagine del manubrio
+        altroform.style.display = 'flex';  // mostra il form display:
+        testo6.style.display = 'none';
+        testo7.style.display = 'none';
+        });
+        
+        
+        const form = document.getElementById("mio-form");
+
+        form.addEventListener("submit", function(event) {
+        const nome = document.getElementById("nome").value.trim();
+        const cognome = document.getElementById("cognome").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (nome === "") {
+            alert("Inserisci il tuo nome");
+            event.preventDefault();
+            return false;
+        }
+
+        if (cognome === "") {
+            alert("Inserisci il tuo cognome");
+            event.preventDefault();
+            return false;
+        }
+
+        if (email === "") {
+            alert("Inserisci la tua email");
+            event.preventDefault();
+            return false;
+        }
+
+        if (password === "") {
+            alert("Inserisci la password");
+            event.preventDefault();
+            return false;
+        }
+        
+        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!regex.test(password)) {
+            alert("La password deve contenere almeno un numero, una maiuscola e una minuscola");
+            event.preventDefault();
+            return false;
+        }
+
+      
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Inserisci un indirizzo email valido");
+            event.preventDefault();
+            return false;
+        }
+
+        return true;
+        });
+
+ 
+    </script> 
+	
+
+</body>
+</html>
+
+
+
+
+

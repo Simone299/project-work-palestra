@@ -1,0 +1,399 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+    background-color: #333;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fff;
+	padding: 10px;
+	color: #333 ;
+  border: 4px solid gold ;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  
+}
+
+nav ul li {
+	margin-left: 40px;
+  margin-right: 40px;
+  
+}
+
+nav ul li a {
+	color:  #333;
+	text-decoration: none;
+  margin-top: 0%;
+}
+
+
+
+h2 {
+	font-size: 24px;
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+label {
+	font-size: 18px;
+	color: #fff;
+	margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
+
+input[type="submit"] {
+	background-color: rgb(28, 27, 27);
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: gold;
+	color: #333;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: 1px solid black;
+	cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#logo {
+	height: 70px;
+	margin-right: 20px;
+  width: 100px;
+}
+
+#logo2{
+  height: 180px;
+}
+
+#staff{
+  height: 180px;
+}
+
+
+.sezione {
+  margin: 0px;
+  float: left;
+  width: 30%;
+  margin-left: 2.7%;
+  margin-right: auto;
+  margin-top: 10%;
+  border: 1px solid gold ;
+  text-align: center;
+
+}
+
+#mio-form {
+  display: none;
+}
+
+#accesso{
+  display: none;
+}
+
+#altroform{
+  display: none;
+}
+
+#manubrio {
+  display: inline-block;
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
+}
+
+#testo{
+  text-align: center;
+}
+
+#testo2{
+  text-align: center;
+}
+
+#testo3{
+  text-align: center;
+}
+
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    border: 4px solid gold;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+
+  .card-img {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+
+  .card-img img {
+    max-width: 100%;
+    height: auto;
+    background-color: #fff;
+  }
+
+  .card-body {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .info-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .info-btn:hover {
+    background-color: gold;
+  }
+
+
+
+.tit{
+  display: inline-block;
+  margin: 50px auto;
+  text-align: center;
+  width: 100%;
+
+}
+
+
+footer {
+  background-color: #fff;
+  color: #333;
+  padding: 5px;
+  text-align: center;
+  margin-top: 70px;
+  border: 4px solid gold ;
+  position: relative;
+  bottom: -8px;
+}
+
+#contatti{
+
+  display: inline-block;
+}
+
+#indirizzi{
+  display: inline-block;
+}
+
+
+.gym{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calendario{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  color: #fff;
+}
+
+.tab-calendario{
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid gold;
+}
+
+th{
+  border: 3px solid gold;
+  padding: 50px;
+}
+
+td{
+  border: 3px solid gold;
+}
+
+
+.card-container-utente{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.card-utente {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  border: 4px solid gold ;
+}
+
+
+
+.card-utente button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-utente button:hover {
+  background-color: gold;
+  color: #333;
+}
+
+.abbonamenti-attivi{
+  margin-top: 200px;
+ 
+}
+
+.abbonamenti-disponibili{
+  margin-top: 100px;
+  margin-bottom: 200px;
+  
+}
+
+.benvenuto{
+  margin-top: 300px;
+  text-align: center;
+  color: #fff;
+  border: 4px solid gold 
+}
+
+main {
+  padding-top: 100px; /* sposto contenuto principale sotto l'header */
+}
+
+.content-container {
+  display: flex; /* allineo l'immagine e il contenitore delle informazioni affiancati */
+  border: 1px solid gold; /* bordo */
+  border-radius: 4px; /* Arrotonda gli angoli del contenitore */
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2); /* Aggiungi un'ombra al contenitore */
+  margin: 100px 20px 20px 20px;
+  color: #fff;
+}
+
+.image-container {
+  width: 50%; /* larghezza fissa per l'immagine e il contenitore delle informazioni */
+}
+
+.image-container img {
+  width: 100%; /* Ridimensiona l'immagine per adattarla al contenitore */
+  height: auto;
+}
+
+.info-container {
+  width: 50%; /* Imposta una larghezza fissa per l'immagine e il contenitore delle informazioni */
+  padding: 0 20px; /* Aggiungi un padding per creare spazio tra l'immagine e il testo */
+}
+
+#admin {
+  padding: 100px 0;
+}
+
+#admin-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+#lista-utenti, #lista-abbonamenti, #lista-attivita, #mio-profilo {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: calc(50% - 20px);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  background-color: #ddd;
+}
+
+.nero {
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+}
+
+.nero:hover {
+  color:rgba(0, 0, 0, 0.2);
+  font-size: 28px;
+}
+
+.none {
+  color: grey;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.none:hover {
+  color:rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 5%;
+}
+
+div ul li {
+  padding-bottom: 5px;
+  }
+
+
