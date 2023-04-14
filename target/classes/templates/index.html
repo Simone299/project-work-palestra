@@ -97,7 +97,7 @@
 		<div class="card-img">
 			<img src="images.jpg" alt="Immagine 1">
 		</div>
-		<div class="card-body" th:each="attivita : ${catalogo}>
+		<div class="card-body" th:each="attivita : ${catalogo}">
 			<h5> class="card-title" th:text="${attivita.titolo}"></h5>
 			<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
 			<button class="info-btn">Più info</button>
@@ -107,7 +107,7 @@
 		<div class="card-img">
 			<img src="images.jpg" alt="Immagine 1">
 		</div>
-		<div class="card-body" th:each="attivita : ${catalogo}>
+		<div class="card-body" th:each="attivita : ${catalogo}">
 			<h5 th:text="${attivita.titolo}">Titolo Attività</h5>
 			<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
 			<button class="info-btn">Più info</button>

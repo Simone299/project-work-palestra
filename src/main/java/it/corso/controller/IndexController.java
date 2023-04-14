@@ -81,7 +81,7 @@ public class IndexController {
 			@RequestParam(name="password",required = false) String password,HttpSession session) {
 		
 		if(utenteService.verificaLogin(username, password, session)== true)
-			return "/areautente";
+			return "/logged";
 		
 		
 		return "redirect:/?err2";
