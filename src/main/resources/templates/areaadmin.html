@@ -26,31 +26,21 @@
         <h2>Sezione amministrazione</h2>
         <div id="admin-container">
             <div id="lista-utenti">
-                <a class="nero" href="#">Lista utenti</a>
-                <p>Visualizza, inserisci e modifica la lista degli utenti iscritti alla palestra!</p>
+                <a class="nero" th:href="@{/lista/1}">Lista utenti</a>
+                <p>Clicca su Lista utenti per: Visualizzare, inserire e modificare la lista degli utenti iscritti alla palestra!</p>
             </div>
             <div id="lista-abbonamenti">
-                <a class="nero" href="#">Lista abbonamenti</a>
-                <p>Visualizza, inserisci e modifica la lista degli abbonamenti attivi!</p>
+                <a class="nero" th:href="@{/lista/2}">Lista abbonamenti</a>
+                <p> Clicca su Lista abbonamenti per: Visualizzare, inserire e modificare la lista degli abbonamenti attivi!</p>
                 
             </div>
             <div id="lista-attivita">
-                <a class="nero" href="#">Lista attività</a>
-                <ul>
-                    <li><a class="none" href="#">Visualizza</a></li>
-                    <li><a class="none" href="#">Inserisci</a></li>
-                    <li><a class="none" href="#">Modifica</a></li>
-                    <li><a class="none" href="#">Rimuovi</a></li>
-                </ul>
+                <a class="nero" th:href="@{/lista/3}">Lista attività</a>
+                <p> Clicca su Lista attivita per: Visualizzare, inserire e modificare la lista degli abbonamenti attivi!</p>
             </div>
             <div id="mio-profilo">
-                <a class="nero" href="#">Il mio profilo</a>
-                <ul>
-                    <li><a class="none" href="#">Modifica profilo</a></li>
-                    <li><a class="none" href="#">Modifica password</a></li>
-                    <li><a class="none" href="#">Impostazioni</a></li>
-                    <li><a class="none" href="#">Esci</a></li>
-                </ul>
+                <a class="nero" th:href="@{/lista/4}">Il mio profilo</a>
+                <p> Clicca Il mio profilo per: modificare username o password</p>
             </div>
         </div>
     </section>

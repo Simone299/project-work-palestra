@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Liste</title>
+		
+	</head>
+	<body>
+		
+		  	<table class="tab-calendario">
+            	<tbody>
+                	<tr th:each="o : ${lista}">
+                    	<td th:text="${o.nome_utente}">Lunedi</td>
+                 		<td th:text="${o.cognome_utente}"></td>
+                    	<td th:text="${o.codice_fiscale}">10:00 - 11:00</td>
+                    
+                	</tr>
+            
+                <!-- aggiungi qui altre righe con le attività -->
+            	</tbody>
+        	</table>
+        
+        
+	</body>
+</html>
