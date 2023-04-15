@@ -28,7 +28,7 @@ public class Attivita {
  private String descrizione;
  
  @Column(name="prezzo_totale")
- private double prezzo_totale;
+ private Double prezzo_totale;
  
  @Column(name="istruttore")
  private String istruttore;
@@ -75,11 +75,11 @@ public void setDescrizione(String descrizione) {
 	this.descrizione = descrizione;
 }
 
-public double getPrezzo_totale() {
+public Double getPrezzo_totale() {
 	return prezzo_totale;
 }
 
-public void setPrezzo_totale(double prezzo_totale) {
+public void setPrezzo_totale(Double prezzo_totale) {
 	this.prezzo_totale = prezzo_totale;
 }
 

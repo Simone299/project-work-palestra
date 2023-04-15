@@ -28,7 +28,7 @@ public class Abbonamento {
 	private LocalDate data_fine;
 	
 	@Column(name = "importo_totale")
-	private double importo_totale;
+	private Double importo_totale;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_utente", referencedColumnName = "id")
@@ -62,11 +62,11 @@ public class Abbonamento {
 		this.data_fine = data_fine;
 	}
 
-	public double getImporto_toatale() {
+	public Double getImporto_toatale() {
 		return importo_totale;
 	}
 
-	public void setImporto_toatale(double importo_toatale) {
+	public void setImporto_toatale(Double importo_toatale) {
 		this.importo_totale = importo_toatale;
 	}
 
