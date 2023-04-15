@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.corso.model.Abbonamento;
+
 import it.corso.model.Attivita;
 import it.corso.model.Turno;
 
@@ -48,21 +49,26 @@ public class loggedController {
 	}
 /////////////////////////////////////////////////////////////////////////////
 	//TODO
-	@GetMapping("/acquista")
-	public String acquistaAbbonamento(@RequestParam(name="id",required = false)Integer id,HttpSession session) {
-		
-		abbonamentoService.registraAbbonamento(null);
-		return "redirect:/logged";
-	}
-	
+
 /////////////////////////////////////////////////////////////////////////////
-	//TODO
-	@GetMapping("/getAttivita")
-	public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSession session) {		
-		Attivita attivita = attivitaService.getAttivitaById(id);
-		
-		return "dettaglio";
-	}
+//	//TODO
+//	@GetMapping("/getAttivita")
+//	public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSession session,Model model) {		
+//		Attivita attivita = attivitaService.getAttivitaById(id);
+//		model.addAttribute("attivita", attivita);
+//		
+//		//attivitaService.registraAttivita(attivita);
+//		return "dettaglio";
+//	}
+/////////////////////////////////////////////////////////////////////////////
+//	@GetMapping("/acquista")
+//	public String acquistaAttivita(@ModelAttribute("attivita")Attivita attivita) {
+//		
+//		attivitaService.registraAttivita(attivita);
+//	
+//		
+//	return "redirect:/logged";
+//	}
 	
 	
 	

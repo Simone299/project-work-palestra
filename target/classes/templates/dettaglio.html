@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dettaglio</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <img src="download.jpg" alt="Logo della palestra" id="logo">
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                 <li><a th:href="@{/logged}">Home</a></li> 
                 <li><a href="#">Attività</a></li>
                 <li><a href="#">Calendario</a></li>
                 <li><a href="#">Contatti</a></li>
@@ -29,12 +29,17 @@
             <div class="image-container">
                 <img src="image.jpg" alt="immagine">
             </div>
-            <div class="info-container">
-                <h2>Titolo personalizzato</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor consectetur sapien, vel cursus sem tempus a. Proin id mauris nec neque bibendum consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor consectetur sapien, vel cursus sem tempus a. Proin id mauris nec neque bibendum consequat.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor consectetur sapien, vel cursus sem tempus a. Proin id mauris nec neque bibendum consequat.
-                </p>
+            <div class="info-container" th:object="${attivita}" >
+            <h2>Titolo personalizzato</h2>
+            <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
+            liquam ac congue ex. Maecenas aliquam, est ac eleifend elementum, 
+            nulla nisl facilisis augue, vitae lacinia enim elit sit amet ante.   </p>
+          <!--        <h2 th:text:="${attivita.gettitolo}">Titolo personalizzato</h2>
+                <p th:text:="${attivita.getdescrizione}"></p>
+                <p th:text:="${attivita.getprezzo_totale}"></p>
+                <p th:text:="${attivita.getistruttore}"></p>
+                <p th:text:=${attivita.turni.giorno_settimana}></p>
+                <p th:text:=${attivita.descrizione.fascia_oraria}></p>-->
                 <button class="buy-btn">Acquista abbonamento</button>
             </div>
         </div>
