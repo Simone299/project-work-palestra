@@ -95,23 +95,13 @@
 
 	<div class="tit"><h2 class="tit">ELENCO ATTIVITA</h2></div>
 
-	<div class="card">
+	<div class="card" th:each="a : ${attivita}">
 		<div class="card-img">
 			<img src="images.jpg" alt="Immagine 1">
 		</div>
-		<div class="card-body" th:each="a : ${attivita}">
+		<div class="card-body" >
 			<h5 th:text="${a.titolo}"> class="card-title" ></h5>
 			<p class="card-text" th:text="${a.descrizione}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
-			<button class="info-btn">Più info</button>
-		</div>
-	</div>
-	<div class="card">
-		<div class="card-img">
-			<img src="images.jpg" alt="Immagine 1">
-		</div>
-		<div class="card-body" th:each="a : ${attivita}">
-			<h5 th:text="${a.titolo}">Titolo Attività</h5>
-			<p class="card-text" th:text="${a.titolo}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
 			<button class="info-btn">Più info</button>
 		</div>
 	</div>
