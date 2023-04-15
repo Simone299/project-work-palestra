@@ -55,11 +55,13 @@ public class loggedController {
 		return "redirect:/logged";
 	}
 	
-/////////////////////////////////////////////////////////////////////////////	
+/////////////////////////////////////////////////////////////////////////////
+	//TODO
 	@GetMapping("/getAttivita")
 	public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSession session) {		
 		Attivita attivita = attivitaService.getAttivitaById(id);
-		return "redirect:/logged";
+		
+		return "dettaglio";
 	}
 	
 	
