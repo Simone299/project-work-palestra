@@ -81,8 +81,8 @@ public class IndexController {
 	public String loginUtente(@RequestParam (name="username",required=false)String username,
 			@RequestParam(name="password",required = false) String password,HttpSession session) {
 		
-		if(utenteService.verificaLogin(username, password, session)== true)
-			return "/logged";
+		if(utenteService.verificaLogin(username, password, session))//<--- tolto il ==true
+			return "redirect:/logged";
 		
 		
 		return "redirect:/?err2";
@@ -93,7 +93,7 @@ public class IndexController {
 			@RequestParam(name="password",required = false) String password,HttpSession session) {
 		 
 		 if(amministratoreService.verificaLogin(username, password, session)== true)
-				return "/areaadmin";
+				return "areaadmin";
 			
 			
 			return "redirect:/?err3";

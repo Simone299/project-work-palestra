@@ -7,23 +7,33 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import it.corso.model.Abbonamento;
 import it.corso.model.Attivita;
 import it.corso.model.Turno;
+
+import it.corso.service.AbbonamentoService;
 import it.corso.service.AttivitaService;
 import it.corso.service.TurnoService;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
-@RequestMapping("logged")
+@RequestMapping("/logged")
 public class loggedController {
 	@Autowired
 	private AttivitaService attivitaService;
 	@Autowired
 	private TurnoService turnoService;
-	
+    @Autowired
+    private AbbonamentoService abbonamentoService;
+////////////////////////////////////////////////////////////////////////////	
 	@GetMapping
-	public String getPage(Model model) {
+	public String getPage(Model model,HttpSession session) {
+		
+		if(session.getAttribute("utente")==null)
+			return "redirect:/";
 		
 		List<Attivita> listaAttivita = attivitaService.getAttivita();
 		Attivita attivita = new Attivita();
@@ -36,7 +46,19 @@ public class loggedController {
 		model.addAttribute("turno", turno);
 		
 		
-		return "/logged";
+		return "logged";
 	}
-
+/////////////////////////////////////////////////////////////////////////////
+	@GetMapping("/acquista")
+	public String acquistaAbbonamento(@RequestParam(name="id",required = false)Integer id,HttpSession session) {
+		
+		Abbonamento abbonamento= abbonamentoService.getAbbonamentoById(id);
+		abbonamentoService.registraAbbonamento(abbonamento);
+		
+		
+		
+		
+		
+		return "redirect:/logged";
+	}
 }
