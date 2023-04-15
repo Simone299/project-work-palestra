@@ -21,7 +21,7 @@ public class AttivitaServiceImpl implements AttivitaService {
 	}
 
 	@Override
-	public Attivita getAttivitabyId(int id) {
+	public Attivita getAttivitaById(int id) {
 		
 		return attivitaDao.findById(id).get();
 	}

@@ -37,7 +37,7 @@
 		<div class="card-body">
 			<h5 class="card-title" th:text="${a.titolo}">Titolo Attività</h5>
 			<p class="card-text"  th:text="${a.descrizione}"></p>
-			<p> <a th:href="@{logged/acquista(id=${a.id})}" th:text="'acquista'"></a></p><!-- da vedere -->
+			<p> <a th:href="@{logged/getAttivita(id=${a.id})}" th:text="'acquista'"></a></p>
 			<button class="info-btn">Più info</button>
 		</div>
 	</div>

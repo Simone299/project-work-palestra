@@ -44,21 +44,24 @@ public class loggedController {
 		Turno turno = new Turno();
 		model.addAttribute("turni", turni);
 		model.addAttribute("turno", turno);
-		
-		
 		return "logged";
 	}
 /////////////////////////////////////////////////////////////////////////////
+	//TODO
 	@GetMapping("/acquista")
 	public String acquistaAbbonamento(@RequestParam(name="id",required = false)Integer id,HttpSession session) {
 		
-		Abbonamento abbonamento= abbonamentoService.getAbbonamentoById(id);
-		abbonamentoService.registraAbbonamento(abbonamento);
-		
-		
-		
-		
-		
+		abbonamentoService.registraAbbonamento(null);
 		return "redirect:/logged";
 	}
+	
+/////////////////////////////////////////////////////////////////////////////	
+	@GetMapping("/getAttivita")
+	public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSession session) {		
+		Attivita attivita = attivitaService.getAttivitaById(id);
+		return "redirect:/logged";
+	}
+	
+	
+	
 }
