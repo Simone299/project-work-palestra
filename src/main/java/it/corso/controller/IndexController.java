@@ -54,7 +54,7 @@ public class IndexController {
 		model.addAttribute("turni", turni);
 			
 		 List<Attivita> attivita = attivitaService.getAttivita();
-			
+			model.addAttribute("attivita", attivita);
 		
 		
 		

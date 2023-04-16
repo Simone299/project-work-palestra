@@ -77,9 +77,7 @@ public String getPage(HttpSession session,Model model) {
 
 public String rinnovaAbbonamento(@RequestParam(name="id") Integer id) {
 	
-//	Abbonamento abbonamento=abbonamentoService.getAbbonamentoById(id);
-//	abbonamentoService.registraAbbonamento(abbonamento);
-//	abbonamentoService.cancellaAbbonamento(abbonamento);
+
 	
 	
 	 Abbonamento abbonamento = abbonamentoService.getAbbonamentoById(id);
