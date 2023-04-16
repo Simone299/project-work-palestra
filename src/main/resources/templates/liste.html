@@ -3,23 +3,133 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Liste</title>
+		<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		th, td {
+			text-align: left;
+			padding: 8px;
+			border-bottom: 1px solid #ddd;
+		}
 		
+		
+		th {
+			background-color: gold;
+			color:  #333;
+		}
+		
+		button {
+            background-color: red; 
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 25px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .modifica {
+            background-color: gold; 
+        }
+        
+        .elimina {
+            background-color: gold; 
+        }
+        
+        
+        
+	</style>
 	</head>
 	<body>
-		
-		  	<table class="tab-calendario">
-            	<tbody>
-                	<tr th:each="o : ${lista}">
-                    	<td th:text="${o.nome_utente}">Lunedi</td>
-                 		<td th:text="${o.cognome_utente}"></td>
-                    	<td th:text="${o.codice_fiscale}">10:00 - 11:00</td>
-                    
-                	</tr>
-            
-                <!-- aggiungi qui altre righe con le attività -->
-            	</tbody>
-        	</table>
-        
+		<div th:if="${mostraDiv}">
+			<table>
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Cognome</th>
+						<th>Codice fiscale</th>
+						<th>Username</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="utente : ${listaUtente}">
+						<td th:text="${utente.nome_utente}"></td>
+						<td th:text="${utente.cognome_utente}"></td>
+						<td th:text="${utente.codice_fiscale}"></td>
+						<td th:text="${utente.username}"></td>
+						<td th:text="${utente.email}"></td>
+						<td>
+                        	<button class="modifica">Modifica</a></button>
+                        	<button class="elimina"><a th:href="@{cancella(id=${utente.id})}">Elimina</a></button>
+                    	</td>
+					</tr>
+				</tbody>
+			</table>
+			<form method="POST" action="aggiungi"  th:object="${utente}">
+    			<label for="nome" th:text="'Nome:'"></label>
+    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="*{nome_utente}">
+    			<div class="row mt-4">
+        			<div class="col-12 text-center">
+            			<input type="submit" th:value="'Aggiungi Utente'" class="btn btn-primary">
+        			</div>
+    			</div>
+			</form>
+		</div>
+		<div th:if="${mostraDiv2}">
+			<table>
+				<thead>
+					<tr>
+						<th>Nome utente</th>
+						<th>Importo totale</th>
+						<th>Data inizio</th>
+						<th>Data fine</th>
+					</tr>
+				</thead>
+					<tbody>
+						<tr th:each="o : ${listaAbbonamento}">
+							<td th:text="${o.utente.nome_utente}"></td>
+							<td th:text="${o.importo_totale}"></td>
+							<td th:text="${o.data_inizio}"></td>
+							<td th:text="${o.data_fine}"></td>
+							<td>
+	                        	<button class="modifica">Modifica</button>
+	                        	<button class="elimina">Elimina</button>
+                    		</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+		<div th:if="${mostraDiv3}">
+			<table>
+				<thead>
+					<tr>
+						<th>Titolo</th>
+						<th>Descrizione</th>
+						<th>Prezzo totale</th>
+						<th>Istruttore</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="o : ${listaAttivita}">
+						<td th:text="${o.titolo}"></td>
+						<td th:text="${o.descrizione}"></td>
+						<td th:text="${o.prezzo_totale}"></td>
+						<td th:text="${o.istruttore}"></td>
+						<td>
+                        	<button class="modifica">Modifica</button>
+                        	<button class="elimina">Elimina</button>
+                   		</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
         
 	</body>
 </html>

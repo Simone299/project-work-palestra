@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import it.corso.model.Abbonamento;
 import it.corso.model.Attivita;
 
@@ -26,17 +30,23 @@ public class listeController {
 	@Autowired
 	AttivitaService attivitaService;
 	
+
+	boolean mostraDiv = false;
+	boolean mostraForm = false;
+	boolean mostraDiv2 = false;
 	
+	boolean mostraDiv3 = false;
 	
 	@GetMapping("/1")
 	public String getpage1(Model model) {
+		model.addAttribute("mostraDiv", mostraDiv);
+		mostraDiv = true;
 		
+		List<Utente> listaUtente = utenteService.getUtenti();
+		Utente utente = new Utente();
+		model.addAttribute("listaUtente", listaUtente);
+		model.addAttribute("utente", utente);
 		
-		
-		List<Utente> lista = utenteService.getUtenti();
-		Utente oggetto = new Utente();
-		model.addAttribute("lista", lista);
-		model.addAttribute("oggetto", oggetto);
 		
 		return "liste";
 	}
@@ -45,12 +55,13 @@ public class listeController {
 	@GetMapping("/2")
 	public String getpage2(Model model) {
 		
+		model.addAttribute("mostraDiv2", mostraDiv2);
+		mostraDiv2 = true;
 		
-		
-		List<Abbonamento> lista = abbonamentoService.getAbbonamenti();
-		Abbonamento oggetto = new Abbonamento();
-		model.addAttribute("lista", lista);
-		model.addAttribute("oggetto", oggetto);
+		List<Abbonamento> listaAbbonamento = abbonamentoService.getAbbonamenti();
+		Abbonamento abbonamento = new Abbonamento();
+		model.addAttribute("listaAbbonamento", listaAbbonamento);
+		model.addAttribute("abbonamento", abbonamento);
 		
 		return "liste";
 	}
@@ -58,15 +69,37 @@ public class listeController {
 	@GetMapping("/3")
 	public String getpage3(Model model) {
 		
+		model.addAttribute("mostraDiv3", mostraDiv3);
+		mostraDiv3 = true;
 		
-		
-		List<Attivita> lista = attivitaService.getAttivita();
-		Attivita oggetto = new Attivita();
-		model.addAttribute("lista", lista);
-		model.addAttribute("oggetto", oggetto);
+		List<Attivita> listaAttivita = attivitaService.getAttivita();
+		Attivita attivita = new Attivita();
+		model.addAttribute("listaAttivita", listaAttivita);
+		model.addAttribute("attivita", attivita);
 		
 		return "liste";
 	}
+	
+	
+	@GetMapping("/cancella")
+	public String cancellaUtente(@RequestParam("id") int id)
+	{
+		Utente utente = utenteService.getUtenteByid(id);
+		utenteService.cancellaUtente(utente);
+		
+		return "redirect:/lista/1";
+	}
+	
+	
+	@PostMapping("aggiungi")
+	public String registraUtente(@ModelAttribute("utente") Utente utente) {
+	    utenteService.registraUtente(utente);
+	    return "redirect:/lista/1";
+	}
+	
+	
+	
+	
 }
 
 

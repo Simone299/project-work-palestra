@@ -72,4 +72,12 @@ public class UtenteServiceImpl implements UtenteService {
 
 	}
 
+
+
+	@Override
+	public void registraUtente(Utente utente) {
+		// TODO Auto-generated method stub
+		utenteDao.save(utente);
+	}
+
 }

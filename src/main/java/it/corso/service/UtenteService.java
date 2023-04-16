@@ -14,5 +14,6 @@ public interface UtenteService {
 	Utente getUtenteByid(int id);
 	List<Utente> getUtenti();
 	void cancellaUtente(Utente utente);
+	void registraUtente(Utente utente);
 	
 }
