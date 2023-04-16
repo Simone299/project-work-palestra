@@ -25,17 +25,20 @@ public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSe
 	Attivita attivita = attivitaService.getAttivitaById(id);
 	model.addAttribute("attivita", attivita);
 	
-	if(session.getAttribute("utente")!=null)
-	return "dettaglio";
+	if(session.getAttribute("utente")!=null) {
+		attivitaService.registraAttivita(attivita);
+		
+		return "dettaglio";
+	
+	}
 	
 	
 	return "redirect:/logged";
 }
 ////////////////////////////////////////////////////////////////////
-@PostMapping
+@GetMapping("/////ass/")
 public String acquistaAttivita(@RequestParam("id")int id,HttpSession session) {
-	Attivita attivita=attivitaService.getAttivitaById(id);
-	attivitaService.registraAttivita(attivita);
+	
 
 	
 return "redirect:/logged";

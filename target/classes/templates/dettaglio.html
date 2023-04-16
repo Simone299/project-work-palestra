@@ -29,18 +29,13 @@
             <div class="image-container">
                 <img src="image.jpg" alt="immagine">
             </div>
-            <div class="info-container" >
-            <h2>Titolo personalizzato</h2>
-            <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
+            <div class="info-container" th:object="${attivita}" >
+            <h2 th:text="${attivita.titolo}">Titolo personalizzato</h2>
+            <p th:text=${attivita.descrizione}>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
             liquam ac congue ex. Maecenas aliquam, est ac eleifend elementum, 
             nulla nisl facilisis augue, vitae lacinia enim elit sit amet ante.   </p>
-            <!--     <h2 th:text:="${attivita.descrizione}">Titolo personalizzato</h2>
-               <p th:text:="${attivita.getDescrizione}"></p>
-                <p th:text:="${attivita.getPrezzo_totale}"></p>
-                <p th:text:="${attivita.getIstruttore}"></p>
-               <p th:text:=${attivita.turni.giorno_settimana}></p>
-                <p th:text:=${attivita.descrizione.fascia_oraria}></p>
-                <button class="buy-btn">Acquista abbonamento</button> --> 
+          
+                <button class="buy-btn">Acquista abbonamento</button>
             </div>
         </div>
     </main>
