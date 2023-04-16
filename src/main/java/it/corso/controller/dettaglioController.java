@@ -28,6 +28,7 @@ public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSe
 	if(session.getAttribute("utente")!=null)
 	return "dettaglio";
 	
+	
 	return "redirect:/logged";
 }
 ////////////////////////////////////////////////////////////////////

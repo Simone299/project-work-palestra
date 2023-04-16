@@ -53,8 +53,7 @@ public class IndexController {
 		List<Turno>	turni= turnoService.getTurni();
 		model.addAttribute("turni", turni);
 			
-		 List<Attivita> attivita = attivitaService.getAttivita();//findAll()----------ho richiamato al posto di findall il metodo già implementato che li prende
-	     model.addAttribute("attivita", attivita); 
+		 List<Attivita> attivita = attivitaService.getAttivita();
 			
 		
 		

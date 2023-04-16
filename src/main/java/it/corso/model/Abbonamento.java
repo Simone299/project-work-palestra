@@ -1,6 +1,8 @@
 package it.corso.model;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+
 @Entity
 @Table(name = "abbonamenti")
 
@@ -22,10 +25,10 @@ public class Abbonamento {
 	private int id;
 	
 	@Column(name = "data_inizio")
-	private LocalDate data_inizio;
+	private LocalDateTime data_inizio;
 	
 	@Column(name = "data_fine")
-	private LocalDate data_fine;
+	private LocalDateTime data_fine;
 	
 	@Column(name = "importo_totale")
 	private double importo_totale;
@@ -37,6 +40,7 @@ public class Abbonamento {
 	@ManyToOne(cascade = CascadeType.REFRESH) //da verificare
     @JoinColumn(name = "id_attivita", referencedColumnName = "id")
 	private Attivita attivita;
+	
 
 	public int getId() {
 		return id;
@@ -46,19 +50,21 @@ public class Abbonamento {
 		this.id = id;
 	}
 
-	public LocalDate getData_inizio() {
+	
+
+	public LocalDateTime getData_inizio() {
 		return data_inizio;
 	}
 
-	public void setData_inizio(LocalDate data_inizio) {
+	public void setData_inizio(LocalDateTime data_inizio) {
 		this.data_inizio = data_inizio;
 	}
 
-	public LocalDate getData_fine() {
+	public LocalDateTime getData_fine() {
 		return data_fine;
 	}
 
-	public void setData_fine(LocalDate data_fine) {
+	public void setData_fine(LocalDateTime data_fine) {
 		this.data_fine = data_fine;
 	}
 
@@ -85,6 +91,8 @@ public class Abbonamento {
 	public void setAttivita(Attivita attivita) {
 		this.attivita = attivita;
 	}
+
+	
 	
 	
 }
