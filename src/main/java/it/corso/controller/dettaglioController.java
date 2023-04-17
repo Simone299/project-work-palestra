@@ -32,6 +32,7 @@ public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSe
 	
 	}
 	
+	
 	return "redirect:/logged";
 }
 ////////////////////////////////////////////////////////////////////
