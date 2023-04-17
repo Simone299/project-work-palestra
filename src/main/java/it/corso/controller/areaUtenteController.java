@@ -44,6 +44,8 @@ private TurnoService turnoService;
 @GetMapping
 //@ResponseBody
 public String getPage(HttpSession session,Model model) {
+	
+	
 	if(session.getAttribute("utente")==null)
 		return "redirect:/logged";
 	
