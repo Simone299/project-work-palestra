@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.corso.model.Abbonamento;
 import it.corso.model.Attivita;
-
+import it.corso.model.Turno;
 import it.corso.model.Utente;
 import it.corso.service.AbbonamentoService;
 import it.corso.service.AttivitaService;
+import it.corso.service.TurnoService;
 import it.corso.service.UtenteService;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -31,6 +32,8 @@ public class listeController {
 	AbbonamentoService abbonamentoService;
 	@Autowired
 	AttivitaService attivitaService;
+	@Autowired
+	TurnoService turnoService;
 	
 
 	boolean mostraDiv = false;
@@ -81,6 +84,11 @@ public class listeController {
 		Attivita attivita = new Attivita();
 		model.addAttribute("listaAttivita", listaAttivita);
 		model.addAttribute("attivita", attivita);
+		
+		List<Turno> listaTurni = turnoService.getTurni();
+		Turno turno = new Turno();
+		model.addAttribute("listaTurni", listaTurni);
+		model.addAttribute("turno", turno);
 		
 		return "liste";
 	}
@@ -133,6 +141,12 @@ public class listeController {
 	@PostMapping("aggiungi3")
 	public String registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
 	    attivitaService.registraAttivita(attivita);
+	    return "redirect:/lista/3";
+	}
+	
+	@PostMapping("aggiungi6")
+	public String registraTurno(@ModelAttribute("turno") Turno turno) {
+	    turnoService.registraTurnio(turno);
 	    return "redirect:/lista/3";
 	}
 	
