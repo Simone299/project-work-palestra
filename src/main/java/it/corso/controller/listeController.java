@@ -24,6 +24,7 @@ import it.corso.service.AttivitaService;
 import it.corso.service.TurnoService;
 import it.corso.service.UtenteService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/lista")
@@ -46,6 +47,8 @@ public class listeController {
 	boolean mostraDiv = false;
 	boolean mostraDiv2 = false;
 	boolean mostraDiv3 = false;
+	
+	
 	
 	
 	@GetMapping("/1")
@@ -150,6 +153,47 @@ public class listeController {
 	    attivitaService.registraAttivita(attivita);
 	    return "redirect:/lista/3";
 	}
+	
+
+	@GetMapping("/cercaattivita")
+	public String modificaAttività(@RequestParam(name="id",required = false) int id,Model model) {
+		
+		Attivita attivita =attivitaService.getAttivitaById(id);
+		model.addAttribute("attivita", attivita);
+		
+		return "prova";
+	}
+	
+	@PostMapping("/modificaattivita")
+	public String modificaAttivita(@RequestParam(name = "id") int id,
+			@RequestParam(name="titolo")String titolo,
+			@RequestParam(name="descrizione")String descrizione,
+			@RequestParam(name="prezzo_totale") double prezzo_totale,
+			@RequestParam(name="istruttore") String istruttore,HttpSession session) {
+		
+		Attivita attivita = attivitaService.getAttivitaById(id);
+		attivita.setTitolo(titolo);
+		attivita.setDescrizione(descrizione);
+		attivita.setPrezzo_totale(prezzo_totale);
+		attivita.setIstruttore(istruttore);
+		
+		attivitaService.registraAttivita(attivita);
+		
+		
+		return "redirect:/lista/3";
+	}
+
+	
+	@PostMapping("/creaattivita")
+	public String creaAttivita (@ModelAttribute ("attivita") Attivita attivita,HttpSession session) {
+		
+		
+		attivitaService.registraAttivita(attivita);
+		
+		
+		return "redirect:/lista/3";
+	}
+	
 	
 	
 	
