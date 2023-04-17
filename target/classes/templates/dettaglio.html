@@ -34,8 +34,9 @@
             <p th:text=${attivita.descrizione}>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
             liquam ac congue ex. Maecenas aliquam, est ac eleifend elementum, 
             nulla nisl facilisis augue, vitae lacinia enim elit sit amet ante.   </p>
-          
-                <button class="buy-btn">Acquista abbonamento</button>
+          		
+          		<a th:href = "@{logged/registraabbonamento(id=${attivita.id})}">Acquista abbonamento</a>
+                <button class="buy-btn"></button>
             </div>
         </div>
     </main>
