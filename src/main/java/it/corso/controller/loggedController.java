@@ -57,24 +57,24 @@ public class loggedController {
 public String registraAbbonamento(@RequestParam(name="id",required = false) int id,HttpSession session) {
 	
 	Attivita attivita=attivitaService.getAttivitaById(id);
-	Utente utente=(Utente) session.getAttribute("utente");
+	Utente utente =(Utente) session.getAttribute("utente");
+	
+	
 	Abbonamento abbonamento= new Abbonamento();
 	abbonamento.setUtente(utente);
 	abbonamento.setAttivita(attivita);
+	abbonamento.setUtente(utente);
 	abbonamento.setData_inizio(LocalDateTime.now());
 	abbonamento.setData_fine(LocalDateTime.now().plusDays(30));
 	abbonamento.setImporto_toatale(attivita.getPrezzo_totale()*8);
 	
 	abbonamentoService.registraAbbonamento(abbonamento);
 	
-    
-    for (Abbonamento a : utente.getAbbonamenti()) {
-    	if(a.getId()==abbonamento.getId()) {
-    		;
-    		break;
-    	}
-    }
-    session.setAttribute("utente", utente);
+	/*
+	 * List<Abbonamento> abbonamenti = utente.getAbbonamenti();
+	 * abbonamenti.add(abbonamento); utente.setAbbonamenti(abbonamenti);
+	 */
+	
 	
 	return "redirect:/logged";
 }
