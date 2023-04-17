@@ -1,5 +1,6 @@
 package it.corso.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -143,6 +144,36 @@ public class listeController {
 	    attivitaService.registraAttivita(attivita);
 	    return "redirect:/lista/3";
 	}
+	
+	@GetMapping("/cercaattivita")
+	public String modificaAttività(@RequestParam(name="id",required = false) int id,Model model) {
+		
+		Attivita attivita =attivitaService.getAttivitaById(id);
+		model.addAttribute("attivita", attivita);
+		
+		return "prova";
+	}
+	
+	@PostMapping("/modificaattivita")
+	public String modificaAttivita(@RequestParam(name = "id",required = false) int id,
+			@RequestParam(name="titolo")String titolo,
+			@RequestParam(name="descrizione")String descrizione,
+			@RequestParam(name="prezzo_totale") double prezzo_totale,
+			@RequestParam(name="istruttore") String istruttore) {
+		
+		Attivita attivita = attivitaService.getAttivitaById(id);
+		attivita.setTitolo(titolo);
+		attivita.setDescrizione(descrizione);
+		attivita.setPrezzo_totale(prezzo_totale);
+		attivita.setIstruttore(istruttore);
+		
+		attivitaService.registraAttivita(attivita);
+		
+		
+		return "liste";
+	}
+	
+	
 	
 	@PostMapping("aggiungi6")
 	public String registraTurno(@ModelAttribute("turno") Turno turno) {

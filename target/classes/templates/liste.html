@@ -131,7 +131,7 @@
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
 						<td>
-                        	<button class="modifica">Modifica</a></button>
+         <!-- da impl -->               	<button class="modifica"><a th:href="@{cercaattivita(id=${o.id})}">Modifica</a></button>
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina</a></button>
                     	</td>
 					</tr>
@@ -146,6 +146,7 @@
         			</div>
     			</div>
 			</form>
+			
 			<table>
 				<thead>
 					<tr>
@@ -161,7 +162,7 @@
 						<td th:text="${o.attivita.titolo}"></td>
 						<td>
                         	<button class="modifica">Modifica</a></button>
-                        	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina</a></button>
+                        	
                     	</td>
 					</tr>
 				</tbody>

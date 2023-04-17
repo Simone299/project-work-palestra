@@ -21,11 +21,12 @@
             </ul>
         </nav>
     </header>
-
-    <h1 class="benvenuto" th:text="'benvenuto nella tua area riservata ' + ${utente.nome_utente}"></h1>
-    <section class="abbonamenti-attivi" th:each="a : ${abbonamenti}">
+   
+    <h1 class="benvenuto" th:text="'benvenuto nella tua area riservata ' + ${utente.nome_utente}"></h1> 
+    <h2 >Abbonamenti Attivi</h2>
+    <section class="abbonamenti-attivi" th:each="a : ${abbonamentiattivi}">
      <!-- DA FORMATTARE E AGGIUSTARE --><div><p th:text="'prezzo totale : '+${prezzototale}"><p></div>
-        <h2 >Abbonamenti Attivi</h2>
+        
         <div class="card-container-utente" >
           <div class="card-utente" >
             <h3>Abbonamento</h3>
