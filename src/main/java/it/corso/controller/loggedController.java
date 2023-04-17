@@ -61,7 +61,6 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	
 	
 	Abbonamento abbonamento= new Abbonamento();
-	abbonamento.setUtente(utente);
 	abbonamento.setAttivita(attivita);
 	abbonamento.setUtente(utente);
 	abbonamento.setData_inizio(LocalDateTime.now());
@@ -70,10 +69,9 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	
 	abbonamentoService.registraAbbonamento(abbonamento);
 	
-	/*
-	 * List<Abbonamento> abbonamenti = utente.getAbbonamenti();
-	 * abbonamenti.add(abbonamento); utente.setAbbonamenti(abbonamenti);
-	 */
+	List<Abbonamento> abbonamenti = utente.getAbbonamenti();
+	abbonamenti.add(abbonamento);
+	utente.setAbbonamenti(abbonamenti);
 	
 	
 	return "redirect:/logged";

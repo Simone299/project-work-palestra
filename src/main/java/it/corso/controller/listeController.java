@@ -182,6 +182,18 @@ public class listeController {
 		return "redirect:/lista/3";
 	}
 	
+	@PostMapping("/creaattivita")
+	public String creaAttivita (@ModelAttribute ("attivita") Attivita attivita,HttpSession session) {
+		
+		
+		attivitaService.registraAttivita(attivita);
+		
+		
+		return "redirect:/lista/3";
+	}
+	
+	
+	
 	
 	
 	@PostMapping("aggiungi6")
