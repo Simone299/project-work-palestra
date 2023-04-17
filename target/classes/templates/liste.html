@@ -131,20 +131,25 @@
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
 						<td>
-                        	<button class="modifica">Modifica</a></button>
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina</a></button>
                     	</td>
 					</tr>
 				</tbody>
 			</table>
 			<form method="POST" action="aggiungi3"  th:object="${attivita}">
-    			<label for="nome" th:text="'Nome:'"></label>
-    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="*{titolo}">
-    			<div class="row mt-4">
-        			<div class="col-12 text-center">
-            			<input type="submit" th:value="'Aggiungi Attivita'" class="btn btn-primary">
-        			</div>
-    			</div>
+    			<label>Titolo:</label>
+			    <input type="text" th:field="*{titolo}" />
+			    <br />
+			    <label>Descrizione:</label>
+			    <input type="text" th:field="*{descrizione}" />
+			    <br />
+			    <label>Prezzo totale:</label>
+			    <input type="number" th:field="*{prezzo_totale}" />
+			    <br />
+			    <label>Istruttore:</label>
+			    <input type="text" th:field="*{istruttore}" />
+			    <br />
+			    <input type="submit" value="Salva"/>
 			</form>
 			<table>
 				<thead>
@@ -160,16 +165,15 @@
 						<td th:text="${o.fascia_oraria}"></td>
 						<td th:text="${o.attivita.titolo}"></td>
 						<td>
-                        	<button class="modifica">Modifica</a></button>
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina</a></button>
                     	</td>
 					</tr>
 				</tbody>
 			</table>
 			<form method="POST" action="aggiungi6"  th:object="${turno}">
-    			<label for="nome" th:text="'Nome:'"></label>
+    			<label for="nome" th:text="'Giorno:'"></label>
     			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="*{giorno_settimana}">
-    			<label for="nome" th:text="'Nome:'"></label>
+    			<label for="nome" th:text="'Fascia Oraria:'"></label>
     			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="*{fascia_oraria}">
     			<label for="cliente" th:text="'Seleziona Attivita:'"></label>
 								<select id="attivita" name="attivita" class="form-select">
