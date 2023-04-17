@@ -22,6 +22,7 @@ import it.corso.service.AttivitaService;
 import it.corso.service.TurnoService;
 import it.corso.service.UtenteService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/lista")
@@ -40,6 +41,8 @@ public class listeController {
 	boolean mostraDiv = false;
 	boolean mostraDiv2 = false;
 	boolean mostraDiv3 = false;
+	
+	
 	
 	
 	@GetMapping("/1")
@@ -155,11 +158,11 @@ public class listeController {
 	}
 	
 	@PostMapping("/modificaattivita")
-	public String modificaAttivita(@RequestParam(name = "id",required = false) int id,
+	public String modificaAttivita(@RequestParam(name = "id") int id,
 			@RequestParam(name="titolo")String titolo,
 			@RequestParam(name="descrizione")String descrizione,
 			@RequestParam(name="prezzo_totale") double prezzo_totale,
-			@RequestParam(name="istruttore") String istruttore) {
+			@RequestParam(name="istruttore") String istruttore,HttpSession session) {
 		
 		Attivita attivita = attivitaService.getAttivitaById(id);
 		attivita.setTitolo(titolo);
@@ -170,7 +173,7 @@ public class listeController {
 		attivitaService.registraAttivita(attivita);
 		
 		
-		return "liste";
+		return "redirect:/lista/3";
 	}
 	
 	

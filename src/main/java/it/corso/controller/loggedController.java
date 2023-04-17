@@ -59,12 +59,22 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	Attivita attivita=attivitaService.getAttivitaById(id);
 	Utente utente=(Utente) session.getAttribute("utente");
 	Abbonamento abbonamento= new Abbonamento();
+	abbonamento.setUtente(utente);
 	abbonamento.setAttivita(attivita);
 	abbonamento.setData_inizio(LocalDateTime.now());
 	abbonamento.setData_fine(LocalDateTime.now().plusDays(30));
 	abbonamento.setImporto_toatale(attivita.getPrezzo_totale()*8);
 	
-	lis
+	abbonamentoService.registraAbbonamento(abbonamento);
+	
+    
+    for (Abbonamento a : utente.getAbbonamenti()) {
+    	if(a.getId()==abbonamento.getId()) {
+    		;
+    		break;
+    	}
+    }
+    session.setAttribute("utente", utente);
 	
 	return "redirect:/logged";
 }
