@@ -12,16 +12,85 @@
     <header>
         <img src="download.jpg" alt="Logo della palestra" id="logo">
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Attività</a></li>
-                <li><a href="#">Calendario</a></li>
-                <li><a href="#">Contatti</a></li>
-				<li><a href="#">Area Riservata</a></li>
-            </ul>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#attiv">Attività</a></li>
+            <li><a id="apri-admin">Area Staff</a></li>
+            <li><a href="#gym">Contatti</a></li>
+            <li><a href="#calendario">Calendario</a></li>
+            <li><a href="#">Area Riservata</a></li>
+          </ul>
         </nav>
-    </header>
-
+      </header>
+      <div id="accesso-form">
+        <form id="form-admin" method="post" action="loginAdmin">
+        <h2 class="dai">Area Staff</h2>
+              <label class="dai" for="username">Username:</label>
+              <input type="text" id="username" name="username"><br>
+  
+              <label class="dai" for="password">Password:</label>
+              <input type="password" id="password" name="password"><br>
+  
+              <input type="submit" value="Accedi">
+          </form>
+          <div    th:if="${errore3}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:red"></div>
+        </div>
+		
+		
+		<div class="grid-container">
+    
+        <div class="grid-item2">
+          <div class="text5">S</div>
+        </div>
+        <div class="grid-item2">
+          <div class="text5">P</div>
+        </div>
+        <div class="grid-item2">
+          <div class="text5">A</div>
+        </div>
+        <div class="grid-item2">
+          
+          <div class="text5">C</div>
+        </div>
+        <div class="grid-item2">
+          <div class="text5">E</div>
+        </div>  
+        
+        <div class="grid-item">
+            <img src="palestra6.jpg" alt="Immagine 6">
+          </div>
+          <div class="grid-item2">
+            <div class="text5">G</div>
+          </div>
+          <div class="grid-item2">
+            <div class="text5">Y</div>
+          </div>
+          <div class="grid-item2">
+            <div class="text5">M</div>
+          </div>
+          <div class="grid-item">
+            <img src="palestra5.jpg" alt="Immagine 3">
+          </div>
+          <div class="grid-item">
+            <div class="text8">BUILD YOUR BODY</div>
+          </div>
+          <div class="grid-item">
+            
+            <img src="palestra2.jpg" alt="Immagine 2">
+          </div>
+          <div class="grid-item">
+            
+            <div class="text8">FOCUS ON YOURSELF</div>
+          </div>
+          <div class="grid-item">
+            
+            <img src="palestra4.jpg" alt="Immagine 4">
+          </div>
+          <div class="grid-item">
+            
+            <div class="text8">BREAK YOUR LIMITS</div>
+          </div>
+      </div>
 
     <!-- Form per la registrazione e l'accesso -->
     <section class="sezione">
@@ -75,25 +144,9 @@
 		<h2 id="testo5">Clicca il logo per il login</h2>
     </section>
 
-    <!-- Form per l'accesso degli amministratori -->
-    <section class="sezione">
-        <h2 id="testo6">Area Riservata</h2>
-		<img id="staff" src="staff.jpg" alt="Staff">
-        <form id="altroform" method="post" action="loginAdmin" >
-			<h2>Area Riservata</h2>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username"><br>
+    
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"><br>
-
-            <input type="submit" value="Accedi">
-        </form>
-        <div    th:if="${errore3}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:red"></div>
-		<h2 id="testo7">Clicca staff per entrare</h2>
-    </section>
-
-	<div class="tit"><h2 class="tit">ELENCO ATTIVITA</h2></div>
+	<div id="attiv" class="tit"><h2 class="tit">ELENCO ATTIVITA</h2></div>
 
 	<div class="card" th:each="a : ${attivita}">
 		<div class="card-img">
@@ -106,7 +159,7 @@
 		</div>
 	</div>
 
-    <div class="calendario">
+    <div class="calendario" id="calendario">
         <h2 id="testo4">Calendario Attività</h2>
         <table class="tab-calendario">
             <thead>
@@ -128,22 +181,43 @@
         </table>
     </div>
     <footer>
-        <div class="footer-info">
-            <h4 id="gym">Space Gym</h4>
-            <p id="indirizzi">Via della Palestra, 1 - 00100 Roma</p>
-            <p id="contatti">Tel: +39 06 1234567 - Email: info@spacegym.it</p>
-            <p></p>
-        </div>
-        <div class="footer-social">
-            <h4>Seguici su</h4>
-            <a href="#"><img src="facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram.png" alt="Instagram"></a>
-        </div>
-        <div class="footer-credits">
-            <p>© 2023 Space Gym. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
+            <div class="footer-info">
+                <h4 id="gym">Space Gym</h4>
+                <p id="indirizzi">Via della Palestra, 1 - 00100 Roma</p>
+                <p id="contatti">Tel: +39 06 1234567 - Email: info@spacegym.it</p>
+                <p></p>
+            </div>
+            <div class="footer-social">
+                <h4>Seguici su</h4>
+                <a href="#"><img class="logo-social" src="logoface.png" alt="Facebook"></a>
+                <a href="#"><img class="logo-social" src="logotwitter.png" alt="Twitter"></a>
+                <a href="#"><img class="logo-social" src="logoinsta.jpeg" alt="Instagram"></a>
+            </div>
+            <div class="footer-credits">
+                <p>© 2023 Space Gym. Tutti i diritti riservati.</p>
+            </div>
+        </footer>
+        
+        
+        <script>
+          const areaStaff = document.querySelector('#apri-admin');
+          const accessoForm = document.querySelector('#accesso-form');
+          
+      
+      
+          areaStaff.addEventListener('dblclick', function() {
+            accessoForm.style.display = 'block';  // mostra il form display:
+            accessoForm.style.position = 'fixed';  // mostra il form display:
+            accessoForm.style.left = '500px';  // mostra il form display:
+            accessoForm.style.top = '-20px';
+          
+          });
+
+          areaStaff.addEventListener('click', function() {
+            accessoForm.style.display = 'none';  // mostra il form display:
+          
+          });
+     </script>
 
 
 	
