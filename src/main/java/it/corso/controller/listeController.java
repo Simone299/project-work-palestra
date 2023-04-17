@@ -2,6 +2,7 @@ package it.corso.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import it.corso.dao.AttivitaDao;
 import it.corso.model.Abbonamento;
 import it.corso.model.Attivita;
 import it.corso.model.Turno;
@@ -28,6 +30,8 @@ import jakarta.servlet.http.HttpServletResponse;
 public class listeController {
 	
 	@Autowired
+	AttivitaDao attivitaDao;
+	@Autowired
 	UtenteService utenteService;
 	@Autowired
 	AbbonamentoService abbonamentoService;
@@ -35,6 +39,8 @@ public class listeController {
 	AttivitaService attivitaService;
 	@Autowired
 	TurnoService turnoService;
+	
+	private Attivita attivita;
 	
 
 	boolean mostraDiv = false;
@@ -183,6 +189,10 @@ public class listeController {
 	
 	
 	
+	
 }
+	
+	
+
 
 
