@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<form method="POST" action="/liste/modificaatiivita" >
+    			<label for="nome" th:text="'Nome:'"></label>
+    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="${attivita.titolo}">
+    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="${attivita.descrizione}">
+    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="${attivita.prezzo_totale}">
+    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="${attivita.istruttore}">
+    			
+    			<div class="row mt-4">
+        			<div class="col-12 text-center">
+            			<input type="submit" th:value="'Aggiungi Attivita'" class="btn btn-primary">
+        			</div>
+    			</div>
+			</form>
+</body>
+</html>

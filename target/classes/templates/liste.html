@@ -65,8 +65,8 @@
 						<td th:text="${utente.username}"></td>
 						<td th:text="${utente.email}"></td>
 						<td>
-                        	<button class="modifica">Modifica</a></button>
-                        	<button class="elimina"><a th:href="@{cancella(id=${utente.id})}">Elimina</a></button>
+                        	
+                        	<button class="elimina"><a th:href="@{lista/cancella(id=${utente.id})}">Elimina</a></button>
                     	</td>
 					</tr>
 				</tbody>
@@ -99,7 +99,7 @@
 							<td th:text="${o.data_fine}"></td>
 							<td>
 	                        	<button class="modifica">Modifica</a></button>
-                        		<button class="elimina"><a th:href="@{cancella2(id=${o.id})}">Elimina</a></button>
+                        		<button class="elimina"><a th:href="@{lista/cancella2(id=${o.id})}">Elimina</a></button>
                     		</td>
 						</tr>
 					</tbody>
@@ -151,6 +151,7 @@
 			    <br />
 			    <input type="submit" value="Salva"/>
 			</form>
+			
 			<table>
 				<thead>
 					<tr>
@@ -165,7 +166,10 @@
 						<td th:text="${o.fascia_oraria}"></td>
 						<td th:text="${o.attivita.titolo}"></td>
 						<td>
+
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina</a></button>
+
+                        	
                     	</td>
 					</tr>
 				</tbody>

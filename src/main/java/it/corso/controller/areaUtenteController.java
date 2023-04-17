@@ -4,6 +4,8 @@ import java.lang.ProcessBuilder.Redirect;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.hibernate.grammars.hql.HqlParser.IsEmptyPredicateContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,8 @@ private TurnoService turnoService;
 @GetMapping
 //@ResponseBody
 public String getPage(HttpSession session,Model model) {
+	
+	
 	if(session.getAttribute("utente")==null)
 		return "redirect:/logged";
 	
@@ -54,8 +58,9 @@ public String getPage(HttpSession session,Model model) {
 	
 	
     List<Abbonamento> abbonamenti = utente.getAbbonamenti();
+    List<Abbonamento> abbonamentiAttivi= abbonamenti.stream().filter(a -> a.getData_fine().isAfter(LocalDateTime.now())).collect(Collectors.toList());
     
-    model.addAttribute("abbonamenti", abbonamenti);
+    model.addAttribute("abbonamentiattivi", abbonamentiAttivi);
     
     double prezzoTotale=0.0;
     
@@ -75,7 +80,7 @@ public String getPage(HttpSession session,Model model) {
 
 @GetMapping("/rinnova")
 
-public String rinnovaAbbonamento(@RequestParam(name="id") Integer id) {
+public String rinnovaAbbonamento(@RequestParam(name="id") Integer id,HttpSession session) {
 	
 
 	
@@ -86,6 +91,15 @@ public String rinnovaAbbonamento(@RequestParam(name="id") Integer id) {
 	    abbonamento.setData_fine(dataRinnovo);
 	    abbonamentoService.registraAbbonamento(abbonamento);
 	
+	    Utente utente=(Utente)session.getAttribute("utente");
+	    for (Abbonamento a : utente.getAbbonamenti()) {
+	    	if(a.getId()==abbonamento.getId()) {
+	    		a.setData_fine(dataRinnovo);
+	    		break;
+	    	}
+	    }
+	    session.setAttribute("utente", utente);
+	    
 	return "redirect:/areautente";
 	
 	

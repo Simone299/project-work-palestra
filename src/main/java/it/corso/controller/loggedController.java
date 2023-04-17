@@ -1,5 +1,6 @@
 package it.corso.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import it.corso.model.Abbonamento;
 import it.corso.model.Attivita;
 import it.corso.model.Turno;
-
+import it.corso.model.Utente;
 import it.corso.service.AbbonamentoService;
 import it.corso.service.AttivitaService;
 import it.corso.service.TurnoService;
+import it.corso.service.UtenteService;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -29,6 +31,8 @@ public class loggedController {
 	private TurnoService turnoService;
     @Autowired
     private AbbonamentoService abbonamentoService;
+    @Autowired
+    private UtenteService utenteService;
 ////////////////////////////////////////////////////////////////////////////	
 	@GetMapping
 	public String getPage(Model model,HttpSession session) {
@@ -48,18 +52,22 @@ public class loggedController {
 		return "logged";
 	}
 /////////////////////////////////////////////////////////////////////////////
-	//TODO
 
-/////////////////////////////////////////////////////////////////////////////
-//	//TODO
-//	@GetMapping("/getAttivita")
-//	public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSession session,Model model) {		
-//		Attivita attivita = attivitaService.getAttivitaById(id);
-//		model.addAttribute("attivita", attivita);
-//		
-//		//attivitaService.registraAttivita(attivita);
-//		return "dettaglio";
-//	}
+@GetMapping("registraabbonamento")
+public String registraAbbonamento(@RequestParam(name="id",required = false) int id,HttpSession session) {
+	
+	Attivita attivita=attivitaService.getAttivitaById(id);
+	Utente utente=(Utente) session.getAttribute("utente");
+	Abbonamento abbonamento= new Abbonamento();
+	abbonamento.setAttivita(attivita);
+	abbonamento.setData_inizio(LocalDateTime.now());
+	abbonamento.setData_fine(LocalDateTime.now().plusDays(30));
+	abbonamento.setImporto_toatale(attivita.getPrezzo_totale()*8);
+	
+	lis
+	
+	return "redirect:/logged";
+}
 /////////////////////////////////////////////////////////////////////////////
 //	@GetMapping("/acquista")
 //	public String acquistaAttivita(@ModelAttribute("attivita")Attivita attivita) {
