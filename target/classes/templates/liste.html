@@ -116,7 +116,7 @@
 				<tbody>
 					<tr th:each="o : ${listaAttivita}">
 						<td th:text="${o.titolo}"></td>
-						<td th:text="${o.descrizione}"></td>
+						<td th:text="${o.descrizione}" style="word-wrap: break-word;"></td>
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
 						<td>
@@ -137,8 +137,10 @@
     			<label>Titolo:</label>
 			    <input type="text" th:field="*{titolo}" />
 			    <br />
+			    
 			    <label>Descrizione:</label>
-			    <input type="text" th:field="*{descrizione}" />
+			    <br />
+			    <textarea th:field="*{descrizione}" rows="4" cols="50"></textarea>
 			    <br />
 			    <label>Prezzo totale:</label>
 			    <input type="number" th:field="*{prezzo_totale}" step="0.01"/>
