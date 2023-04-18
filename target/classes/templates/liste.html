@@ -7,17 +7,26 @@
 		table {
 			border-collapse: collapse;
 			width: 100%;
+			
 		}
 		th, td {
 			text-align: left;
 			padding: 8px;
-			border-bottom: 1px solid #ddd;
+			border-bottom: 3px solid #ddd;
+			border-right: 3px solid #ddd;
+			border-left: 3px solid #ddd;
+			border-top: 3px solid #ddd;
+			color: white;
+			font-size: 20px;
 		}
 		
 		
 		th {
 			background-color: gold;
 			color:  #333;
+			border-top: 3px solid  #333;
+			border-left: 3px solid  #333;
+			border-right: 3px solid  #333;
 		}
 		
 		button {
@@ -41,12 +50,38 @@
             background-color: gold; 
         }
         
+        h1{
+        	background-color: gold; 
+        	text-align: center;
+        }
+        
+        .freccia{
+        
+        	font-size: 30px;
+        	text-decoration: none;
+        	background-color: gold; 
+        	color:  #333;
+        	
+        }
+        
+        .freccia-btn{
+        
+        	text-decoration: none;
+        	background-color: gold;
+        	margin-top:20px; 
+        	
+        }
+        
+        
         
         
 	</style>
 	</head>
-	<body>
+	<body style="background-color: #333;">
+	
+	
 		<div th:if="${mostraDiv}">
+			<h1>LISTA UTENTI</h1>
 			<table>
 				<thead>
 					<tr>
@@ -66,18 +101,16 @@
 						<td th:text="${utente.codice_fiscale}"></td>
 						<td th:text="${utente.username}"></td>
 						<td th:text="${utente.email}"></td>
-						<td>
-                        	
-                        	
-                    	</td>
 					</tr>
 				</tbody>
 			</table>
+			<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>
 			<!-- ////TODO -->
 			<!-- <a th:href="@{/lista/1}">Torna all'Area admin</a>
 			<a href="liste">Torna all'Area admin</a>  finire link-->
 		</div>
 		<div th:if="${mostraDiv2}">
+			<h1>LISTA ABBONAMENTI</h1>
 			<table>
 			
 				<thead>
@@ -101,10 +134,11 @@
 					</tbody>
 				</table>
 			
+				<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>
 		</div>
 		<div th:if="${mostraDiv3}">
+			<h1>LISTA ABBONAMENTI</h1>
 			<table>
-			<legend>lista attività</legend>
 				<thead>
 					<tr>
 						<th>Titolo</th>
@@ -174,45 +208,45 @@
 				</tbody>
 			</table>
 		<form method="POST" action="aggiungi6" th:object="${turno}">
-    <label for="giorno_settimana" th:text="'Giorno:'"></label>
-    <select id="giorno_settimana" name="giorno_settimana" class="form-select" required="required" th:field="*{giorno_settimana}">
-        <option value="Lunedì" >Lunedì</option>
-        <option value="Martedì" >Martedì</option>
-        <option value="Mercoledì" >Mercoledì</option>
-        <option value="Giovedì" >Giovedì</option>
-        <option value="Venerdì" >Venerdì</option>
-        <option value="Sabato" >Sabato</option>
-    </select>
-   <label for="fascia_oraria" th:text="'Fascia Oraria:'"></label>
-<select id="fascia_oraria" name="fascia_oraria" class="form-select" required="required" th:field="*{fascia_oraria}">
-    <option value="">Seleziona una fascia oraria</option>
-    <option value="8:00">8:00 - 9:00</option>
-    <option value="9:00">9:00 - 10:00</option>
-    <option value="10:00">10:00 - 11:00</option>
-    <option value="11:00">11:00 - 12:00</option>
-    <option value="12:00">12:00 - 13:00</option>
-    <option value="13:00">13:00 - 14:00</option>
-    <option value="14:00">14:00 - 15:00</option>
-    <option value="15:00">15:00 - 16:00</option>
-    <option value="16:00">16:00 - 17:00</option>
-    <option value="17:00">17:00 - 18:00</option>
-    <option value="18:00">18:00 - 19:00</option>
-    <option value="19:00">19:00 - 20:00</option>
-</select>
+    		<label for="giorno_settimana" th:text="'Giorno:'"></label>
+    		<select id="giorno_settimana" name="giorno_settimana" class="form-select" required="required" th:field="*{giorno_settimana}">
+		        <option value="Lunedì" >Lunedì</option>
+		        <option value="Martedì" >Martedì</option>
+		        <option value="Mercoledì" >Mercoledì</option>
+		        <option value="Giovedì" >Giovedì</option>
+		        <option value="Venerdì" >Venerdì</option>
+		        <option value="Sabato" >Sabato</option>
+		    </select>
+		   	<label for="fascia_oraria" th:text="'Fascia Oraria:'"></label>
+			<select id="fascia_oraria" name="fascia_oraria" class="form-select" required="required" th:field="*{fascia_oraria}">
+			    <option value="">Seleziona una fascia oraria</option>
+			    <option value="8:00">8:00 - 9:00</option>
+			    <option value="9:00">9:00 - 10:00</option>
+			    <option value="10:00">10:00 - 11:00</option>
+			    <option value="11:00">11:00 - 12:00</option>
+			    <option value="12:00">12:00 - 13:00</option>
+			    <option value="13:00">13:00 - 14:00</option>
+			    <option value="14:00">14:00 - 15:00</option>
+			    <option value="15:00">15:00 - 16:00</option>
+			    <option value="16:00">16:00 - 17:00</option>
+			    <option value="17:00">17:00 - 18:00</option>
+			    <option value="18:00">18:00 - 19:00</option>
+			    <option value="19:00">19:00 - 20:00</option>
+			</select>
 
-    <label for="cliente" th:text="'Seleziona Attività:'"></label>
-    <select id="attivita" name="attivita" class="form-select">
-        <option th:each="attivita : ${listaAttivita}" th:value="${attivita.id}" th:text="${attivita.titolo}" th:selected="${turno.attivita != null AND attivita.id == turno.attivita.id}">
-        </option>
-    </select>
-    <div class="row mt-4">
+	    	<label for="cliente" th:text="'Seleziona Attività:'"></label>
+	    	<select id="attivita" name="attivita" class="form-select">
+	        	<option th:each="attivita : ${listaAttivita}" th:value="${attivita.id}" th:text="${attivita.titolo}" th:selected="${turno.attivita != null AND attivita.id == turno.attivita.id}">
+	        	</option>
+    		</select>
+    	<div class="row mt-4">
         <div class="col-12 text-center">
             <input type="submit" th:value="'Aggiungi Attività'" class="btn btn-primary">
         </div>
-    </div>
-</form>
+    	</div>
+		</form>
 			
-			
+		<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>	
 		</div>
 
         

@@ -78,6 +78,9 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	return "redirect:/logged";
 }
 
+
+
+
 /////////////////////////////////////////////////////////////////////////////
 //	@GetMapping("/acquista")
 //	public String acquistaAttivita(@ModelAttribute("attivita")Attivita attivita) {

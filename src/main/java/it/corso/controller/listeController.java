@@ -199,6 +199,14 @@ public class listeController {
 	
 	
 	
+	@GetMapping("/loginAdmin/")
+	public String getpage7() {
+		
+		return "areaadmin";
+	}
+	
+	
+	
 }
 	
 	

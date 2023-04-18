@@ -166,8 +166,8 @@
 		<div class="card-body" >
 
 			<h5 class="card-title" th:text="${a.titolo}"> </h5>
-			<p class="card-text" th:text="${a.descrizione}" style="overflow: hidden; text-overflow: ellipsis; max-height: 1000px; max-width: 900px;"></p>
-			<button class="info-btn">Più info</button>
+			<p class="card-text" th:text="${a.descrizione}" style="overflow: hidden; text-overflow: ellipsis; display: block;  max-height: 1000px; max-width: 700px;"></p>
+			<button class="info-btn"><a th:href="@{/dettaglioS(id=${a.id})}">Più info</a></button>
 
 		</div>
 	</div>

@@ -118,17 +118,7 @@ input[type="submit"]:hover {
 
 }
 
-#mio-form {
-  display: none;
-}
 
-#accesso{
-  display: none;
-}
-
-#altroform{
-  display: none;
-}
 
 #manubrio {
   display: inline-block;
@@ -340,7 +330,7 @@ main {
 }
 
 .info-container {
-  width: 50%; /* Imposta una larghezza fissa per l'immagine e il contenitore delle informazioni */
+  width: 75%; /* Imposta una larghezza fissa per l'immagine e il contenitore delle informazioni */
   padding: 0 20px; /* Aggiungi un padding per creare spazio tra l'immagine e il testo */
 }
 
@@ -430,4 +420,10 @@ div ul li {
   a[href*="logged"] {
   color: #fff;
   text-decoration: none;
+}
+
+
+.totale{
+	
+	background-color:  #333;
 }

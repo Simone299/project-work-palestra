@@ -11,6 +11,7 @@
 <body>
     <!-- Header -->
     <header>
+    	<div class="totale">
         <img src="download.jpg" alt="Logo della palestra" id="logo">
         <nav>
             <ul>
@@ -30,8 +31,8 @@
             <div class="info-container" th:object="${attivita}" >
             <h2 th:text="${attivita.titolo}">Titolo personalizzato</h2>
 
-            <div th:text="${attivita.descrizione}" style="word-wrap: break-word;"></div>
-                <button class="buy-btn" ><a th:href="@{logged/registraabbonamento(id=${attivita.id})}">Acquista Abbonamento</a></button>
+            <div th:text="${attivita.descrizione}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
+                <div th:if="${ancora}"><button class="buy-btn" ><a th:href="@{logged/registraabbonamento(id=${attivita.id})}">Acquista Abbonamento</a></button></div>
             </div>
         </div>
     </main>
@@ -52,6 +53,7 @@
         </div>
         <div class="footer-credits">
             <p>© 2023 Space Gym. Tutti i diritti riservati.</p>
+        </div>
         </div>
     </footer>
 
