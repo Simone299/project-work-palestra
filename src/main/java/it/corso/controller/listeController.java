@@ -103,41 +103,6 @@ public class listeController {
 		return "liste";
 	}
 	
-	
-	@GetMapping("/cancella")
-	public String cancellaUtente(@RequestParam("id") int id)
-	{
-		Utente utente = utenteService.getUtenteByid(id);
-		utenteService.cancellaUtente(utente);
-		
-		return "redirect:/lista/1";
-	}
-	
-	
-	@PostMapping("aggiungi")
-	public String registraUtente(@ModelAttribute("utente") Utente utente) {
-	    utenteService.registraUtente(utente);
-	    return "redirect:/lista/1";
-	}
-	
-	@GetMapping("/cancella2")
-	public String cancellaAbbonamento(@RequestParam("id") int id)
-	{
-		
-		Abbonamento abbonamento = abbonamentoService.getAbbonamentoById(id);
-		abbonamentoService.cancellaAbbonamento(abbonamento);
-		
-		return "redirect:/lista/2";
-	}
-	
-	@PostMapping("aggiungi2")
-	public String registraAbbonamento(@ModelAttribute("abbonamento") Abbonamento abbonamento) {
-	    abbonamentoService.registraAbbonamento(abbonamento);
-	    return "redirect:/lista/2";
-	}
-	
-	
-	
 	@GetMapping("/cancella3")
 	public String cancellaAttivita(@RequestParam("id") int id)
 	{
@@ -148,21 +113,23 @@ public class listeController {
 		return "redirect:/lista/3";
 	}
 	
-	@PostMapping("aggiungi3")
-	public String registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
-	    attivitaService.registraAttivita(attivita);
-	    return "redirect:/lista/3";
-	}
+	
+	  @PostMapping("aggiungi3") public String
+	  registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
+	  attivitaService.registraAttivita(attivita); return "redirect:/lista/3"; }
+	 
 	
 
-	@GetMapping("/cercaattivita")
-	public String modificaAttività(@RequestParam(name="id",required = false) int id,Model model) {
-		
-		Attivita attivita =attivitaService.getAttivitaById(id);
-		model.addAttribute("attivita", attivita);
-		
-		return "prova";
-	}
+	/*
+	 * @GetMapping("/cercaattivita") public String
+	 * modificaAttivita(@RequestParam(name="id",required = false) int id,Model
+	 * model) {
+	 * 
+	 * Attivita attivita =attivitaService.getAttivitaById(id);
+	 * model.addAttribute("attivita", attivita);
+	 * 
+	 * return "prova"; }
+	 */
 	
 	@PostMapping("/modificaattivita")
 	public String modificaAttivita(@RequestParam(name = "id") int id,
@@ -184,15 +151,16 @@ public class listeController {
 	}
 
 	
-	@PostMapping("/creaattivita")
-	public String creaAttivita (@ModelAttribute ("attivita") Attivita attivita,HttpSession session) {
-		
-		
-		attivitaService.registraAttivita(attivita);
-		
-		
-		return "redirect:/lista/3";
-	}
+	/*
+	 * @PostMapping("/creaattivita") public String creaAttivita (@ModelAttribute
+	 * ("attivita") Attivita attivita,HttpSession session) {
+	 * 
+	 * 
+	 * attivitaService.registraAttivita(attivita);
+	 * 
+	 * 
+	 * return "redirect:/lista/3"; }
+	 */
 	
 	
 	
