@@ -84,11 +84,11 @@ public class listeController {
 	}
 	
 	@GetMapping("/3")
-	public String getpage3(Model model) {
+	public String getpage3(Model model,@RequestParam(name="err",required = false) String err) {
 		
 		mostraDiv3 = true;
 		model.addAttribute("mostraDiv3", mostraDiv3);
-		
+		model.addAttribute("err", err != null);
 		
 		List<Attivita> listaAttivita = attivitaService.getAttivita();
 		Attivita attivita = new Attivita();
@@ -108,7 +108,13 @@ public class listeController {
 	{
 		
 		Attivita attivita = attivitaService.getAttivitaById(id);
-		attivitaService.cancellaAttivita(attivita);
+		
+		if(attivita.getAbbonamenti().size() > 0)
+			return "redirect:/lista/3?err";
+		
+				attivitaService.cancellaAttivita(attivita);
+		
+		
 		
 		return "redirect:/lista/3";
 	}

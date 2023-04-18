@@ -66,23 +66,16 @@
 						<td th:text="${utente.email}"></td>
 						<td>
                         	
-                        	<button class="elimina"><a th:href="@{lista/cancella(id=${utente.id})}">Elimina</a></button>
+                        	
                     	</td>
 					</tr>
 				</tbody>
 			</table>
-			<form method="POST" action="aggiungi"  th:object="${utente}">
-    			<label for="nome" th:text="'Nome:'"></label>
-    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="*{nome_utente}">
-    			<div class="row mt-4">
-        			<div class="col-12 text-center">
-            			<input type="submit" th:value="'Aggiungi Utente'" class="btn btn-primary">
-        			</div>
-    			</div>
-			</form>
+			
 		</div>
 		<div th:if="${mostraDiv2}">
 			<table>
+			
 				<thead>
 					<tr>
 						<th>Nome utente</th>
@@ -97,25 +90,15 @@
 							<td th:text="${o.importo_totale}"></td>
 							<td th:text="${o.data_inizio}"></td>
 							<td th:text="${o.data_fine}"></td>
-							<td>
-	                        	<button class="modifica">Modifica</a></button>
-                        		<button class="elimina"><a th:href="@{lista/cancella2(id=${o.id})}">Elimina</a></button>
-                    		</td>
+							
 						</tr>
 					</tbody>
 				</table>
-				<form method="POST" action="aggiungi2"  th:object="${abbonamento}">
-	    			<label for="nome" th:text="'Prezzo:'"></label>
-	    			<input type="number" id="importo" name="importo_totale" class="form-control" required="required" th:field="*{importo_totale}">
-	    			<div class="row mt-4">
-	        			<div class="col-12 text-center">
-	            			<input type="submit" th:value="'Aggiungi Abbonamento'" class="btn btn-primary">
-	        			</div>
-	    			</div>
-				</form>
+			
 		</div>
 		<div th:if="${mostraDiv3}">
 			<table>
+			<legend>lista attività</legend>
 				<thead>
 					<tr>
 						<th>Titolo</th>
@@ -131,12 +114,20 @@
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
 						<td>
-                        	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina</a></button>
+                        	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina </a></button>
+                        	<div th:if="${err}">
+                        	<p th:text="'non puo essere cancellato'">     </p>
+                        	</div>
+                        	
+                        	
+                        	
+               <!-- cont -->         	
                     	</td>
 					</tr>
 				</tbody>
 			</table>
 			<form method="POST" action="aggiungi3"  th:object="${attivita}">
+			<h1>aggiungi attivita :</h1>
     			<label>Titolo:</label>
 			    <input type="text" th:field="*{titolo}" />
 			    <br />
@@ -151,7 +142,7 @@
 			    <br />
 			    <input type="submit" value="Salva"/>
 			</form>
-			
+			<legend> lista turni</legend>
 			<table>
 				<thead>
 					<tr>
@@ -174,22 +165,44 @@
 					</tr>
 				</tbody>
 			</table>
-			<form method="POST" action="aggiungi6"  th:object="${turno}">
-    			<label for="nome" th:text="'Giorno:'"></label>
-    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="*{giorno_settimana}">
-    			<label for="nome" th:text="'Fascia Oraria:'"></label>
-    			<input type="text" id="nome" name="nome" class="form-control" required="required" th:field="*{fascia_oraria}">
-    			<label for="cliente" th:text="'Seleziona Attivita:'"></label>
-								<select id="attivita" name="attivita" class="form-select">
-        							<option th:each="attivita : ${listaAttivita}" th:value="${attivita.id}" th:text="${attivita.titolo}" th:selected="${turno.attivita != null AND attivita.id == turno.attivita.id}">
-        							</option>
-    							</select>
-    			<div class="row mt-4">
-        			<div class="col-12 text-center">
-            			<input type="submit" th:value="'Aggiungi Attivita'" class="btn btn-primary">
-        			</div>
-    			</div>
-			</form>
+		<form method="POST" action="aggiungi6" th:object="${turno}">
+    <label for="giorno_settimana" th:text="'Giorno:'"></label>
+    <select id="giorno_settimana" name="giorno_settimana" class="form-select" required="required" th:field="*{giorno_settimana}">
+        <option value="Lunedì" >Lunedì</option>
+        <option value="Martedì" >Martedì</option>
+        <option value="Mercoledì" >Mercoledì</option>
+        <option value="Giovedì" >Giovedì</option>
+        <option value="Venerdì" >Venerdì</option>
+        <option value="Sabato" >Sabato</option>
+    </select>
+   <label for="fascia_oraria" th:text="'Fascia Oraria:'"></label>
+<select id="fascia_oraria" name="fascia_oraria" class="form-select" required="required" th:field="*{fascia_oraria}">
+    <option value="">Seleziona una fascia oraria</option>
+    <option value="8:00">8:00 - 9:00</option>
+    <option value="9:00">9:00 - 10:00</option>
+    <option value="10:00">10:00 - 11:00</option>
+    <option value="11:00">11:00 - 12:00</option>
+    <option value="12:00">12:00 - 13:00</option>
+    <option value="13:00">13:00 - 14:00</option>
+    <option value="14:00">14:00 - 15:00</option>
+    <option value="15:00">15:00 - 16:00</option>
+    <option value="16:00">16:00 - 17:00</option>
+    <option value="17:00">17:00 - 18:00</option>
+    <option value="18:00">18:00 - 19:00</option>
+    <option value="19:00">19:00 - 20:00</option>
+</select>
+
+    <label for="cliente" th:text="'Seleziona Attività:'"></label>
+    <select id="attivita" name="attivita" class="form-select">
+        <option th:each="attivita : ${listaAttivita}" th:value="${attivita.id}" th:text="${attivita.titolo}" th:selected="${turno.attivita != null AND attivita.id == turno.attivita.id}">
+        </option>
+    </select>
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <input type="submit" th:value="'Aggiungi Attività'" class="btn btn-primary">
+        </div>
+    </div>
+</form>
 			
 			
 		</div>
