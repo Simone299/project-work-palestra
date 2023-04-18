@@ -135,7 +135,7 @@
 			    <input type="text" th:field="*{descrizione}" />
 			    <br />
 			    <label>Prezzo totale:</label>
-			    <input type="number" th:field="*{prezzo_totale}" />
+			    <input type="number" th:field="*{prezzo_totale}" step="0.01"/>
 			    <br />
 			    <label>Istruttore:</label>
 			    <input type="text" th:field="*{istruttore}" />
@@ -158,7 +158,7 @@
 						<td th:text="${o.attivita.titolo}"></td>
 						<td>
 
-                        	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina</a></button>
+                        	<button class="elimina"><a th:href="@{cancella4(id=${o.id})}">Elimina</a></button>
 
                         	
                     	</td>

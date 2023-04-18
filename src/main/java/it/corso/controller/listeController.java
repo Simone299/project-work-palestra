@@ -84,7 +84,7 @@ public class listeController {
 	}
 	
 	@GetMapping("/3")
-	public String getpage3(Model model,@RequestParam(name="err",required = false) String err) {
+	public String getpage3(Model model,@RequestParam(name="err",required = false) String err,HttpSession session) {
 		
 		mostraDiv3 = true;
 		model.addAttribute("mostraDiv3", mostraDiv3);
@@ -120,9 +120,11 @@ public class listeController {
 	}
 	
 	
-	  @PostMapping("aggiungi3") public String
-	  registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
-	  attivitaService.registraAttivita(attivita); return "redirect:/lista/3"; }
+	  @PostMapping("aggiungi3")
+	  public String registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
+		  
+	  attivitaService.registraAttivita(attivita); 
+	  return "redirect:/lista/3"; }
 	 
 	
 
@@ -178,6 +180,22 @@ public class listeController {
 	    return "redirect:/lista/3";
 	}
 	
+	@GetMapping("/cancella4")
+	public String cancellaTurno(@RequestParam(name="id",required = false) int id,HttpSession session)
+	{
+		
+		Turno turno = turnoService.getTurnoById(id);
+	
+		
+		System.out.println(turno.getId());
+		
+		
+				turnoService.cancellaTurno(turno);
+		
+		
+		
+		return "redirect:/lista/3";
+	}
 	
 	
 	
