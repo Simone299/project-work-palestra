@@ -18,6 +18,7 @@
 			border-top: 3px solid #ddd;
 			color: white;
 			font-size: 20px;
+			
 		}
 		
 		
@@ -33,7 +34,7 @@
             background-color: red; 
             border: none;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 10px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -42,17 +43,36 @@
             cursor: pointer;
         }
         
-        .modifica {
-            background-color: gold; 
-        }
         
         .elimina {
-            background-color: gold; 
+            background-color: gold;
+            color: #fff;
+			  border: none;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  font-size: 16px;
+			  cursor: pointer;
+			  text-decoration: none;
+			  cursor: pointer;
+        }
+        
+        .elimina:hover{
+        	 cursor: pointer;
+        	 background-color: red;
+        }
+        
+        a{
+        	text-decoration: none;
+        	color: black;
         }
         
         h1{
         	background-color: gold; 
         	text-align: center;
+        	font-size: 24px;
+  			font-weight: bold;
+  			margin-bottom: 40px;
+  			margin-top: 80px;
         }
         
         .freccia{
@@ -72,8 +92,93 @@
         	
         }
         
-        
-        
+        form {
+			  width:30%;
+			  
+			  padding: 20px;
+			  border: 1px solid #ccc;
+			  border-radius: 5px;
+			  background-color:  #333;
+			  
+			}
+		        
+		label {
+			  display: block;
+			  margin-bottom: 10px;
+			  color: white;
+			  font-size: 20px;
+			}
+			
+		input[type="text"],
+		input[type="number"] {
+			  width: 100%;
+			 
+			  border-radius: 5px;
+			  border: 1px solid #ccc;
+			  margin-bottom: 20px;
+			  font-size: 16px;
+			  margin-left:auto;
+			  margin-right: auto;
+			  height: 40px;
+			}
+			
+		textarea {
+			  width: 100%;
+			  height: 150px;
+			  
+			  border-radius: 5px;
+			  border: 1px solid #ccc;
+			  margin-bottom: 20px;
+			  font-size: 16px;
+			  margin-left:auto;
+			  margin-right: auto;
+			}
+			
+		input[type="submit"] {
+			   background-color: gold;
+			  color: black;
+			  border: none;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  font-size: 16px;
+			  cursor: pointer;
+			}
+			
+		input[type="submit"]:hover {
+			 
+			  background-color: #4CAF50;
+			}
+			
+			.form1, .form2 {
+			    display: inline-block;
+			    width: 36%;
+			    margin-right: 2.5%;
+			    vertical-align: top;
+			    margin-left: 2.5%;
+			    margin-top: 40px;
+			    padding: 50px;
+			}
+
+			.form2 {
+			    margin-right: 0;
+			}
+			
+			
+			form-container{
+				
+				margin-top: 20px;
+			}
+			
+			select{
+				
+				margin-bottom: 30px;
+			}
+			
+			.cella{
+				text-align: center;
+				width: 20px;
+			}
+       
         
 	</style>
 	</head>
@@ -137,7 +242,7 @@
 				<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>
 		</div>
 		<div th:if="${mostraDiv3}">
-			<h1>LISTA ABBONAMENTI</h1>
+			<h1>LISTA ATTIVITA E CALENDARIO</h1>
 			<table>
 				<thead>
 					<tr>
@@ -150,7 +255,7 @@
 				<tbody>
 					<tr th:each="o : ${listaAttivita}">
 						<td th:text="${o.titolo}"></td>
-						<td th:text="${o.descrizione}" style="word-wrap: break-word;"></td>
+						<td style="white-space: pre-wrap; word-break: break-all;" th:text="${o.descrizione}"></td>
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
 						<td>
@@ -166,8 +271,33 @@
 					</tr>
 				</tbody>
 			</table>
-			<form method="POST" action="aggiungi3"  th:object="${attivita}">
-			<h1>aggiungi attivita :</h1>
+			
+			<h1>LISTA TURNI</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>Giorno</th>
+						<th>Fascia Oraria</th>
+						<th>Nome Attivita</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="o : ${listaTurni}">
+						<td th:text="${o.giorno_settimana}"></td>
+						<td th:text="${o.fascia_oraria}"></td>
+						<td th:text="${o.attivita.titolo}"></td>
+						<td class="cella">
+
+                        	<button class="elimina"><a th:href="@{cancella4(id=${o.id})}">Elimina</a></button>
+
+                        	
+                    	</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="form-container">
+			<form method="POST" action="aggiungi3"  th:object="${attivita}" class="form1">
+			<h1 style="margin-top: 0px;">AGGIUNGI ATTIVITA</h1>
     			<label>Titolo:</label>
 			    <input type="text" th:field="*{titolo}" />
 			    <br />
@@ -182,32 +312,12 @@
 			    <label>Istruttore:</label>
 			    <input type="text" th:field="*{istruttore}" />
 			    <br />
-			    <input type="submit" value="Salva"/>
+			    <input type="submit" value="Salva Attivita"/>
 			</form>
-			<legend> lista turni</legend>
-			<table>
-				<thead>
-					<tr>
-						<th>Giorno</th>
-						<th>Fascia Oraria</th>
-						<th>Nome Attivita</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="o : ${listaTurni}">
-						<td th:text="${o.giorno_settimana}"></td>
-						<td th:text="${o.fascia_oraria}"></td>
-						<td th:text="${o.attivita.titolo}"></td>
-						<td>
-
-                        	<button class="elimina"><a th:href="@{cancella4(id=${o.id})}">Elimina</a></button>
-
-                        	
-                    	</td>
-					</tr>
-				</tbody>
-			</table>
-		<form method="POST" action="aggiungi6" th:object="${turno}">
+			
+			
+			<form method="POST" action="aggiungi6" th:object="${turno}" class="form2">
+			<h1 style="margin-top: 0px;">ASSOCIA TURNO-ATTIVITA</h1>
     		<label for="giorno_settimana" th:text="'Giorno:'"></label>
     		<select id="giorno_settimana" name="giorno_settimana" class="form-select" required="required" th:field="*{giorno_settimana}">
 		        <option value="Lunedì" >Lunedì</option>
@@ -241,10 +351,12 @@
     		</select>
     	<div class="row mt-4">
         <div class="col-12 text-center">
-            <input type="submit" th:value="'Aggiungi Attività'" class="btn btn-primary">
+            <input type="submit" th:value="'Associa Attività'" class="btn btn-primary">
         </div>
     	</div>
 		</form>
+		</div>
+		
 			
 		<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>	
 		</div>
