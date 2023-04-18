@@ -50,6 +50,8 @@
 			<table>
 				<thead>
 					<tr>
+					
+					     
 						<th>Nome</th>
 						<th>Cognome</th>
 						<th>Codice fiscale</th>
@@ -79,6 +81,7 @@
 				<thead>
 					<tr>
 						<th>Nome utente</th>
+						<th>Attività</th>
 						<th>Importo totale</th>
 						<th>Data inizio</th>
 						<th>Data fine</th>
@@ -87,6 +90,7 @@
 					<tbody>
 						<tr th:each="o : ${listaAbbonamento}">
 							<td th:text="${o.utente.nome_utente}"></td>
+							<td th:text="${o.attivita.titolo}"></td>
 							<td th:text="${o.importo_totale}"></td>
 							<td th:text="${o.data_inizio}"></td>
 							<td th:text="${o.data_fine}"></td>

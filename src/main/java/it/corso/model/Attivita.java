@@ -45,7 +45,7 @@ public class Attivita {
  @OneToMany
  (
          mappedBy = "attivita",
-         cascade = CascadeType.ALL,
+         cascade = CascadeType.REFRESH,
          fetch = FetchType.EAGER,
          orphanRemoval = true
  )

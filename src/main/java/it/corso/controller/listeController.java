@@ -31,17 +31,17 @@ import jakarta.servlet.http.HttpSession;
 public class listeController {
 	
 	@Autowired
-	AttivitaDao attivitaDao;
+	private AttivitaDao attivitaDao;
 	@Autowired
-	UtenteService utenteService;
+	private UtenteService utenteService;
 	@Autowired
-	AbbonamentoService abbonamentoService;
+	private AbbonamentoService abbonamentoService;
 	@Autowired
-	AttivitaService attivitaService;
+	private AttivitaService attivitaService;
 	@Autowired
-	TurnoService turnoService;
+	private TurnoService turnoService;
 	
-	private Attivita attivita;
+
 	
 
 	boolean mostraDiv = false;
@@ -187,7 +187,7 @@ public class listeController {
 		Turno turno = turnoService.getTurnoById(id);
 	
 		
-		System.out.println(turno.getId());
+		System.out.println(turno.getGiorno_settimana());
 		
 		
 				turnoService.cancellaTurno(turno);
