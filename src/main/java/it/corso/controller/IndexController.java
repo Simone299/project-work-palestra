@@ -98,5 +98,14 @@ public class IndexController {
 			return "redirect:/?err3";
 	 }
 	 
+	 @GetMapping("/logout")
+	 public String logout(HttpSession session) {
+		 
+		 session.invalidate();
+
+		 return "redirect:/";
+	 }
+	 
+	 
 	 
 }
