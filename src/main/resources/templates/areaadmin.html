@@ -13,11 +13,12 @@
         <img src="download.jpg" alt="Logo della palestra" id="logo">
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Attività</a></li>
+                
+            <!--     <li><a href="#">Attività</a></li>
                 <li><a href="#">Calendario</a></li>
                 <li><a href="#">Contatti</a></li>
-				<li><a href="#">Area Riservata</a></li>
+				<li><a href="#">Area Riservata</a></li> -->
+				<li><a th:href="@{/logout}">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -38,10 +39,7 @@
                 <a class="nero" th:href="@{/lista/3}">Lista attività e calendario</a>
                 <p> Clicca su Lista attivita per: Visualizzare, inserire e modificare la lista delle attivita attive!</p>
             </div>
-            <div id="mio-profilo">
-                <a class="nero" th:href="@{/lista/4}">Il mio profilo</a>
-                <p> Clicca Il mio profilo per: modificare username o password</p>
-            </div>
+           
         </div>
     </section>
 

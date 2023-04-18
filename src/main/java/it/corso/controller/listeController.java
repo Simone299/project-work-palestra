@@ -31,17 +31,17 @@ import jakarta.servlet.http.HttpSession;
 public class listeController {
 	
 	@Autowired
-	AttivitaDao attivitaDao;
+	private AttivitaDao attivitaDao;
 	@Autowired
-	UtenteService utenteService;
+	private UtenteService utenteService;
 	@Autowired
-	AbbonamentoService abbonamentoService;
+	private AbbonamentoService abbonamentoService;
 	@Autowired
-	AttivitaService attivitaService;
+	private AttivitaService attivitaService;
 	@Autowired
-	TurnoService turnoService;
+	private TurnoService turnoService;
 	
-	private Attivita attivita;
+
 	
 
 	boolean mostraDiv = false;
@@ -84,11 +84,11 @@ public class listeController {
 	}
 	
 	@GetMapping("/3")
-	public String getpage3(Model model) {
+	public String getpage3(Model model,@RequestParam(name="err",required = false) String err,HttpSession session) {
 		
 		mostraDiv3 = true;
 		model.addAttribute("mostraDiv3", mostraDiv3);
-		
+		model.addAttribute("err", err != null);
 		
 		List<Attivita> listaAttivita = attivitaService.getAttivita();
 		Attivita attivita = new Attivita();
@@ -103,66 +103,41 @@ public class listeController {
 		return "liste";
 	}
 	
-	
-	@GetMapping("/cancella")
-	public String cancellaUtente(@RequestParam("id") int id)
-	{
-		Utente utente = utenteService.getUtenteByid(id);
-		utenteService.cancellaUtente(utente);
-		
-		return "redirect:/lista/1";
-	}
-	
-	
-	@PostMapping("aggiungi")
-	public String registraUtente(@ModelAttribute("utente") Utente utente) {
-	    utenteService.registraUtente(utente);
-	    return "redirect:/lista/1";
-	}
-	
-	@GetMapping("/cancella2")
-	public String cancellaAbbonamento(@RequestParam("id") int id)
-	{
-		
-		Abbonamento abbonamento = abbonamentoService.getAbbonamentoById(id);
-		abbonamentoService.cancellaAbbonamento(abbonamento);
-		
-		return "redirect:/lista/2";
-	}
-	
-	@PostMapping("aggiungi2")
-	public String registraAbbonamento(@ModelAttribute("abbonamento") Abbonamento abbonamento) {
-	    abbonamentoService.registraAbbonamento(abbonamento);
-	    return "redirect:/lista/2";
-	}
-	
-	
-	
 	@GetMapping("/cancella3")
 	public String cancellaAttivita(@RequestParam("id") int id)
 	{
 		
 		Attivita attivita = attivitaService.getAttivitaById(id);
-		attivitaService.cancellaAttivita(attivita);
+		
+		if(attivita.getAbbonamenti().size() > 0)
+			return "redirect:/lista/3?err";
+		
+				attivitaService.cancellaAttivita(attivita);
+		
+		
 		
 		return "redirect:/lista/3";
 	}
 	
-	@PostMapping("aggiungi3")
-	public String registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
-	    attivitaService.registraAttivita(attivita);
-	    return "redirect:/lista/3";
-	}
+	
+	  @PostMapping("aggiungi3")
+	  public String registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
+		  
+	  attivitaService.registraAttivita(attivita); 
+	  return "redirect:/lista/3"; }
+	 
 	
 
-	@GetMapping("/cercaattivita")
-	public String modificaAttività(@RequestParam(name="id",required = false) int id,Model model) {
-		
-		Attivita attivita =attivitaService.getAttivitaById(id);
-		model.addAttribute("attivita", attivita);
-		
-		return "prova";
-	}
+	/*
+	 * @GetMapping("/cercaattivita") public String
+	 * modificaAttivita(@RequestParam(name="id",required = false) int id,Model
+	 * model) {
+	 * 
+	 * Attivita attivita =attivitaService.getAttivitaById(id);
+	 * model.addAttribute("attivita", attivita);
+	 * 
+	 * return "prova"; }
+	 */
 	
 	@PostMapping("/modificaattivita")
 	public String modificaAttivita(@RequestParam(name = "id") int id,
@@ -184,15 +159,16 @@ public class listeController {
 	}
 
 	
-	@PostMapping("/creaattivita")
-	public String creaAttivita (@ModelAttribute ("attivita") Attivita attivita,HttpSession session) {
-		
-		
-		attivitaService.registraAttivita(attivita);
-		
-		
-		return "redirect:/lista/3";
-	}
+	/*
+	 * @PostMapping("/creaattivita") public String creaAttivita (@ModelAttribute
+	 * ("attivita") Attivita attivita,HttpSession session) {
+	 * 
+	 * 
+	 * attivitaService.registraAttivita(attivita);
+	 * 
+	 * 
+	 * return "redirect:/lista/3"; }
+	 */
 	
 	
 	
@@ -204,6 +180,22 @@ public class listeController {
 	    return "redirect:/lista/3";
 	}
 	
+	@GetMapping("/cancella4")
+	public String cancellaTurno(@RequestParam(name="id",required = false) int id,HttpSession session)
+	{
+		
+		Turno turno = turnoService.getTurnoById(id);
+	
+		
+		System.out.println(turno.getGiorno_settimana());
+		
+		
+				turnoService.cancellaTurno(turno);
+		
+		
+		
+		return "redirect:/lista/3";
+	}
 	
 	
 	

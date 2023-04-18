@@ -15,10 +15,8 @@
         <nav>
             <ul>
                  <li><a th:href="@{/logged}">Home</a></li> 
-                <li><a href="#">Attività</a></li>
-                <li><a href="#">Calendario</a></li>
-                <li><a href="#">Contatti</a></li>
-				<li><a href="#">Area Riservata</a></li>
+				<li><a th:href="@{/areautente}">Area Utente</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -31,6 +29,7 @@
             </div>
             <div class="info-container" th:object="${attivita}" >
             <h2 th:text="${attivita.titolo}">Titolo personalizzato</h2>
+
             <div th:text="${attivita.descrizione}" style="word-wrap: break-word;"></div>
                 <button class="buy-btn" ><a th:href="@{logged/registraabbonamento(id=${attivita.id})}">Acquista Abbonamento</a></button>
             </div>
