@@ -17,8 +17,8 @@
             <ul>
                 <li><a th:href="@{/logged}">Home</a></li>
                 <li><a href="#">Attività</a></li>
-                <li><a href="#">Calendario</a></li>
-                <li><a href="#">Contatti</a></li>
+                <li><a href="#calendario">Calendario</a></li>
+                <li><a href="#gym">Contatti</a></li>
 				<li><a th:href="@{/areautente}">Area Riservata</a></li><!-- prova -->
             </ul>
         </nav>
@@ -28,7 +28,7 @@
     
 
 
-	<div class="tit"><h2 class="tit">ELENCO ATTIVITA</h2></div>
+	<div id="attiv" class="tit"><h2 id="testo4" style="margin-top: 60px;">ELENCO ATTIVITA</h2></div>
 
 	<div class="card" th:each="a : ${listaAttivita}">
 		<div class="card-img">
@@ -36,14 +36,14 @@
 		</div>
 		<div class="card-body">
 			<h5 class="card-title" th:text="${a.titolo}">Titolo Attività</h5>
-			<p class="card-text"  th:text="${a.descrizione}"></p>
-			<p> <a th:href="@{dettaglio(id=${a.id})}" th:text="'dettagli'"></a></p><!-- --prova -->
-			<button class="info-btn">Più info</button>
+			<p class="card-text"  th:text="${a.descrizione}" style="overflow: hidden; text-overflow: ellipsis; display: block;  max-height: 1000px; max-width: 700px;"></p>
+			<!-- --prova -->
+			<button class="info-btn"><a th:href="@{dettaglio(id=${a.id})}">Info e Acquisto</a></button>
 		</div>
 	</div>
 
-    <div class="calendario">
-        <h2 id="testo4" >Calendario Attività</h2>
+    <div class="calendario" id="calendario">
+        <h2 id="testo4">Calendario Attività</h2>
         <table class="tab-calendario">
             <thead>
                 <tr>
@@ -73,9 +73,9 @@
         </div>
         <div class="footer-social">
             <h4>Seguici su</h4>
-            <a href="#"><img src="facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+           	<a href="#"><img class="logo-social" src="logoface.png" alt="Facebook"></a>
+            <a href="#"><img class="logo-social" src="logotwitter.png" alt="Twitter"></a>
+            <a href="#"><img class="logo-social" src="logoinsta.jpeg" alt="Instagram"></a>
             
         </div>
         <div class="footer-credits">

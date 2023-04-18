@@ -18,7 +18,7 @@
             <li><a id="apri-admin">Area Staff</a></li>
             <li><a href="#gym">Contatti</a></li>
             <li><a href="#calendario">Calendario</a></li>
-            <li><a href="#">Area Riservata</a></li>
+            <li><a href="#">Area Utente</a></li>
           </ul>
         </nav>
       </header>
@@ -97,7 +97,7 @@
         <h2 id="testo">Registrazione</h2>
 		
 		<img id="manubrio" src="images.jpg" alt="Manubrio">
-        <form id="mio-form"  method="post" th:object="${utente}" >
+        <form id="mio-form"  method="post" th:object="${utente}" onsubmit="return validateForm()">
 			<h2>Registrazione</h2>
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" th:field="*{nome_utente}" required><br>
@@ -123,6 +123,7 @@
         </form>
         <div    th:if="${errore}"   th:text="'Utente già esistente'" style="color:red"></div>
         <div    th:if="${ceck}"   th:text="'Utente registrato! Effettua il login'" style="color:green"></div>
+        <div    th:if="${errore2}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:#333;"></div>
 		<h2 id="testo2">Clicca i Manubri per registrarti</h2>
 	</section>
 
@@ -134,11 +135,12 @@
             <label for="username">Username:</label>
             <input type="text" id="username" name="username"   required><br>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"   required ><br>
+            <label for="password2">Password:</label>
+            <input type="password" id="password2" name="password"   required ><br>
 
             <input type="submit" value="Accedi">
         </form>
+        <div    th:if="${ceck}"   th:text="'Utente registrato! Effettua il login'" style="color:#333;"></div>
         <div    th:if="${errore2}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:red"></div>
         <!-- vedi login.htm  esercizio6 -->
 		<h2 id="testo5">Clicca il logo per il login</h2>
@@ -146,15 +148,15 @@
 
     
 
-	<div id="attiv" class="tit"><h2 class="tit">ELENCO ATTIVITA</h2></div>
+	<div id="attiv" class="tit"><h2 id="testo4">ELENCO ATTIVITA</h2></div>
 
 	<div class="card" th:each="a : ${attivita}">
 		<div class="card-img">
 			<img src="images.jpg" alt="Immagine 1">
 		</div>
 		<div class="card-body" >
-			<h5 th:text="${a.titolo}"> class="card-title" ></h5>
-			<p class="card-text" th:text="${a.descrizione}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus sollicitudin consectetur. Aenean auctor non dui nec accumsan. Sed bibendum.</p>
+			<h5 class="card-title" th:text="${a.titolo}"> </h5>
+			<p class="card-text" th:text="${a.descrizione}" style="overflow: hidden; text-overflow: ellipsis; max-height: 1000px; max-width: 900px;"></p>
 			<button class="info-btn">Più info</button>
 		</div>
 	</div>
@@ -199,7 +201,7 @@
         </footer>
         
         
-        <script>
+        <script type="text/javascript">
           const areaStaff = document.querySelector('#apri-admin');
           const accessoForm = document.querySelector('#accesso-form');
           
@@ -217,11 +219,11 @@
             accessoForm.style.display = 'none';  // mostra il form display:
           
           });
-     </script>
+    
 
 
 	
-	<script>
+	
        	const manubrio = document.querySelector('#manubrio');
 		const mioForm = document.querySelector('#mio-form');
 		const testo = document.getElementById("testo")
@@ -250,73 +252,62 @@
         });
 
      
-
-
-
-        const staff = document.querySelector('#staff');
-        const altroform = document.querySelector('#altroform');
-        const testo6 = document.getElementById("testo6")
-        const testo7 = document.getElementById("testo7")
-
-
-        staff.addEventListener('click', function() {
-        staff.style.display = 'none';  // nasconde l'immagine del manubrio
-        altroform.style.display = 'flex';  // mostra il form display:
-        testo6.style.display = 'none';
-        testo7.style.display = 'none';
-        });
         
         
-        const form = document.getElementById("mio-form");
 
-        form.addEventListener("submit", function(event) {
-        const nome = document.getElementById("nome").value.trim();
-        const cognome = document.getElementById("cognome").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-
-        if (nome === "") {
-            alert("Inserisci il tuo nome");
-            event.preventDefault();
-            return false;
-        }
-
-        if (cognome === "") {
-            alert("Inserisci il tuo cognome");
-            event.preventDefault();
-            return false;
-        }
-
-        if (email === "") {
-            alert("Inserisci la tua email");
-            event.preventDefault();
-            return false;
-        }
-
-        if (password === "") {
-            alert("Inserisci la password");
-            event.preventDefault();
-            return false;
-        }
         
-        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-        if (!regex.test(password)) {
-            alert("La password deve contenere almeno un numero, una maiuscola e una minuscola");
-            event.preventDefault();
-            return false;
-        }
+        function validateForm() {
+            var nome = document.forms["mio-form"]["nome"].value;
+            var cognome = document.forms["mio-form"]["cognome"].value;
+            var codiceFiscale = document.forms["mio-form"]["codice fiscale"].value;
+            var email = document.forms["mio-form"]["email"].value;
+            var password = document.forms["mio-form"]["password"].value;
+            var username = document.forms["mio-form"]["username"].value;
+            var containsUpperCase = /[A-Z]/.test(password);
+            var containsNumber = /\d/.test(password);
 
-      
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert("Inserisci un indirizzo email valido");
-            event.preventDefault();
-            return false;
-        }
+            if (nome == "") {
+              alert("Il campo nome è obbligatorio");
+              return false;
+            }
 
-        return true;
-        });
+            if (cognome == "") {
+              alert("Il campo cognome è obbligatorio");
+              return false;
+            }
+
+            if (codiceFiscale == "") {
+              alert("Il campo codice fiscale è obbligatorio");
+              return false;
+            }else if (codiceFiscale.length < 16) {
+                alert("Il codice fiscale e' composto da 16 caratteri");
+                return false;
+            }
+
+            if (email == "") {
+              alert("Il campo email è obbligatorio");
+              return false;
+            }
+
+            if (password == "") {
+              alert("Il campo password è obbligatorio");
+              return false;
+            } else if (password.length < 8) {
+              alert("La password deve contenere almeno 8 caratteri");
+              return false;
+            } else if (!containsUpperCase || !containsNumber) {
+              alert("La password deve contenere almeno una maiuscola e un numero");
+              return false;
+            }
+
+            if (username == "") {
+              alert("Il campo username è obbligatorio");
+              return false;
+            }
+
+            return true;
+          }
+              
 
  
     </script> 
