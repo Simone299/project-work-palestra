@@ -50,6 +50,7 @@ h2 {
 	font-size: 24px;
 	color: #fff;
 	margin-bottom: 10px;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 form {
@@ -117,17 +118,7 @@ input[type="submit"]:hover {
 
 }
 
-#mio-form {
-  display: none;
-}
 
-#accesso{
-  display: none;
-}
-
-#altroform{
-  display: none;
-}
 
 #manubrio {
   display: inline-block;
@@ -339,7 +330,7 @@ main {
 }
 
 .info-container {
-  width: 50%; /* Imposta una larghezza fissa per l'immagine e il contenitore delle informazioni */
+  width: 75%; /* Imposta una larghezza fissa per l'immagine e il contenitore delle informazioni */
   padding: 0 20px; /* Aggiungi un padding per creare spazio tra l'immagine e il testo */
 }
 
@@ -396,6 +387,43 @@ ul {
 div ul li {
   padding-bottom: 5px;
   }
+  
+  
+.my-text{
+	
+	width: 100%;
+	height: auto;
+}
 
 
-;
+
+.buy-btn {
+    background-color: gold;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .buy-btn:hover {
+    background-color: #d4af37;
+    color:#333;
+  }
+  
+  
+  
+  a[href*="logged"] {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.totale{
+	
+	background-color:  #333;
+}

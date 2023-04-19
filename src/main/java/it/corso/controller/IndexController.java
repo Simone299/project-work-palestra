@@ -107,5 +107,25 @@ public class IndexController {
 	 }
 	 
 	 
+	 @GetMapping("/dettaglioS")
+	 public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSession session,Model model) {	
+	 	
+	 	Attivita attivita = attivitaService.getAttivitaById(id);
+	 	model.addAttribute("attivita", attivita);
+	 	
+	 	if(session.getAttribute("utente")==null) {
+	 		attivitaService.registraAttivita(attivita);
+	 		boolean ancora = false;
+	 		model.addAttribute("ancora", ancora);
+	 		
+	 		return "dettaglio";
+	 	
+	 	}
+	 	
+	 	return "redirect:/";
+	 	
+	 }
+	 
+	 
 	 
 }

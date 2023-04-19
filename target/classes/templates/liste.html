@@ -7,24 +7,34 @@
 		table {
 			border-collapse: collapse;
 			width: 100%;
+			
 		}
 		th, td {
 			text-align: left;
 			padding: 8px;
-			border-bottom: 1px solid #ddd;
+			border-bottom: 3px solid #ddd;
+			border-right: 3px solid #ddd;
+			border-left: 3px solid #ddd;
+			border-top: 3px solid #ddd;
+			color: white;
+			font-size: 20px;
+			
 		}
 		
 		
 		th {
 			background-color: gold;
 			color:  #333;
+			border-top: 3px solid  #333;
+			border-left: 3px solid  #333;
+			border-right: 3px solid  #333;
 		}
 		
 		button {
             background-color: red; 
             border: none;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 10px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -33,20 +43,150 @@
             cursor: pointer;
         }
         
-        .modifica {
-            background-color: gold; 
-        }
         
         .elimina {
-            background-color: gold; 
+            background-color: gold;
+            color: #fff;
+			  border: none;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  font-size: 16px;
+			  cursor: pointer;
+			  text-decoration: none;
+			  cursor: pointer;
         }
         
+        .elimina:hover{
+        	 cursor: pointer;
+        	 background-color: red;
+        }
         
+        a{
+        	text-decoration: none;
+        	color: black;
+        }
+        
+        h1{
+        	background-color: gold; 
+        	text-align: center;
+        	font-size: 24px;
+  			font-weight: bold;
+  			margin-bottom: 40px;
+  			margin-top: 80px;
+        }
+        
+        .freccia{
+        
+        	font-size: 30px;
+        	text-decoration: none;
+        	background-color: gold; 
+        	color:  #333;
+        	
+        }
+        
+        .freccia-btn{
+        
+        	text-decoration: none;
+        	background-color: gold;
+        	margin-top:20px; 
+        	
+        }
+        
+        form {
+			  width:30%;
+			  
+			  padding: 20px;
+			  border: 1px solid #ccc;
+			  border-radius: 5px;
+			  background-color:  #333;
+			  
+			}
+		        
+		label {
+			  display: block;
+			  margin-bottom: 10px;
+			  color: white;
+			  font-size: 20px;
+			}
+			
+		input[type="text"],
+		input[type="number"] {
+			  width: 100%;
+			 
+			  border-radius: 5px;
+			  border: 1px solid #ccc;
+			  margin-bottom: 20px;
+			  font-size: 16px;
+			  margin-left:auto;
+			  margin-right: auto;
+			  height: 40px;
+			}
+			
+		textarea {
+			  width: 100%;
+			  height: 150px;
+			  
+			  border-radius: 5px;
+			  border: 1px solid #ccc;
+			  margin-bottom: 20px;
+			  font-size: 16px;
+			  margin-left:auto;
+			  margin-right: auto;
+			}
+			
+		input[type="submit"] {
+			   background-color: gold;
+			  color: black;
+			  border: none;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  font-size: 16px;
+			  cursor: pointer;
+			}
+			
+		input[type="submit"]:hover {
+			 
+			  background-color: #4CAF50;
+			}
+			
+			.form1, .form2 {
+			    display: inline-block;
+			    width: 36%;
+			    margin-right: 2.5%;
+			    vertical-align: top;
+			    margin-left: 2.5%;
+			    margin-top: 40px;
+			    padding: 50px;
+			}
+
+			.form2 {
+			    margin-right: 0;
+			}
+			
+			
+			form-container{
+				
+				margin-top: 20px;
+			}
+			
+			select{
+				
+				margin-bottom: 30px;
+			}
+			
+			.cella{
+				text-align: center;
+				width: 20px;
+			}
+       
         
 	</style>
 	</head>
-	<body>
+	<body style="background-color: #333;">
+	
+	
 		<div th:if="${mostraDiv}">
+			<h1>LISTA UTENTI</h1>
 			<table>
 				<thead>
 					<tr>
@@ -66,18 +206,16 @@
 						<td th:text="${utente.codice_fiscale}"></td>
 						<td th:text="${utente.username}"></td>
 						<td th:text="${utente.email}"></td>
-						<td>
-                        	
-                        	
-                    	</td>
 					</tr>
 				</tbody>
 			</table>
+			<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>
 			<!-- ////TODO -->
 			<!-- <a th:href="@{/lista/1}">Torna all'Area admin</a>
 			<a href="liste">Torna all'Area admin</a>  finire link-->
 		</div>
 		<div th:if="${mostraDiv2}">
+			<h1>LISTA ABBONAMENTI</h1>
 			<table>
 			
 				<thead>
@@ -101,10 +239,11 @@
 					</tbody>
 				</table>
 			
+				<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>
 		</div>
 		<div th:if="${mostraDiv3}">
+			<h1>LISTA ATTIVITA E CALENDARIO</h1>
 			<table>
-			<legend>lista attività</legend>
 				<thead>
 					<tr>
 						<th>Titolo</th>
@@ -116,7 +255,7 @@
 				<tbody>
 					<tr th:each="o : ${listaAttivita}">
 						<td th:text="${o.titolo}"></td>
-						<td th:text="${o.descrizione}" style="word-wrap: break-word;"></td>
+						<td style="white-space: pre-wrap; word-break: break-all;" th:text="${o.descrizione}"></td>
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
 						<td>
@@ -134,8 +273,33 @@
 					</tr>
 				</tbody>
 			</table>
-			<form method="POST" action="aggiungi3"  th:object="${attivita}">
-			<h1>aggiungi attivita :</h1>
+			
+			<h1>LISTA TURNI</h1>
+			<table>
+				<thead>
+					<tr>
+						<th>Giorno</th>
+						<th>Fascia Oraria</th>
+						<th>Nome Attivita</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="o : ${listaTurni}">
+						<td th:text="${o.giorno_settimana}"></td>
+						<td th:text="${o.fascia_oraria}"></td>
+						<td th:text="${o.attivita.titolo}"></td>
+						<td class="cella">
+
+                        	<button class="elimina"><a th:href="@{cancella4(id=${o.id})}">Elimina</a></button>
+
+                        	
+                    	</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="form-container">
+			<form method="POST" action="aggiungi3"  th:object="${attivita}" class="form1">
+			<h1 style="margin-top: 0px;">AGGIUNGI ATTIVITA</h1>
     			<label>Titolo:</label>
 			    <input type="text" th:field="*{titolo}" />
 			    <br />
@@ -150,71 +314,53 @@
 			    <label>Istruttore:</label>
 			    <input type="text" th:field="*{istruttore}" />
 			    <br />
-			    <input type="submit" value="Salva"/>
+			    <input type="submit" value="Salva Attivita"/>
 			</form>
-			<legend> lista turni</legend>
-			<table>
-				<thead>
-					<tr>
-						<th>Giorno</th>
-						<th>Fascia Oraria</th>
-						<th>Nome Attivita</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="o : ${listaTurni}">
-						<td th:text="${o.giorno_settimana}"></td>
-						<td th:text="${o.fascia_oraria}"></td>
-						<td th:text="${o.attivita.titolo}"></td>
-						<td>
+			
+			
+			<form method="POST" action="aggiungi6" th:object="${turno}" class="form2">
+			<h1 style="margin-top: 0px;">ASSOCIA TURNO-ATTIVITA</h1>
+    		<label for="giorno_settimana" th:text="'Giorno:'"></label>
+    		<select id="giorno_settimana" name="giorno_settimana" class="form-select" required="required" th:field="*{giorno_settimana}">
+		        <option value="Lunedì" >Lunedì</option>
+		        <option value="Martedì" >Martedì</option>
+		        <option value="Mercoledì" >Mercoledì</option>
+		        <option value="Giovedì" >Giovedì</option>
+		        <option value="Venerdì" >Venerdì</option>
+		        <option value="Sabato" >Sabato</option>
+		    </select>
+		   	<label for="fascia_oraria" th:text="'Fascia Oraria:'"></label>
+			<select id="fascia_oraria" name="fascia_oraria" class="form-select" required="required" th:field="*{fascia_oraria}">
+			    <option value="">Seleziona una fascia oraria</option>
+			    <option value="8:00">8:00 - 9:00</option>
+			    <option value="9:00">9:00 - 10:00</option>
+			    <option value="10:00">10:00 - 11:00</option>
+			    <option value="11:00">11:00 - 12:00</option>
+			    <option value="12:00">12:00 - 13:00</option>
+			    <option value="13:00">13:00 - 14:00</option>
+			    <option value="14:00">14:00 - 15:00</option>
+			    <option value="15:00">15:00 - 16:00</option>
+			    <option value="16:00">16:00 - 17:00</option>
+			    <option value="17:00">17:00 - 18:00</option>
+			    <option value="18:00">18:00 - 19:00</option>
+			    <option value="19:00">19:00 - 20:00</option>
+			</select>
 
-                        	<button class="elimina"><a th:href="@{cancella4(id=${o.id})}">Elimina</a></button>
-
-                        	
-                    	</td>
-					</tr>
-				</tbody>
-			</table>
-		<form method="POST" action="aggiungi6" th:object="${turno}">
-    <label for="giorno_settimana" th:text="'Giorno:'"></label>
-    <select id="giorno_settimana" name="giorno_settimana" class="form-select" required="required" th:field="*{giorno_settimana}">
-        <option value="Lunedì" >Lunedì</option>
-        <option value="Martedì" >Martedì</option>
-        <option value="Mercoledì" >Mercoledì</option>
-        <option value="Giovedì" >Giovedì</option>
-        <option value="Venerdì" >Venerdì</option>
-        <option value="Sabato" >Sabato</option>
-    </select>
-   <label for="fascia_oraria" th:text="'Fascia Oraria:'"></label>
-<select id="fascia_oraria" name="fascia_oraria" class="form-select" required="required" th:field="*{fascia_oraria}">
-    <option value="">Seleziona una fascia oraria</option>
-    <option value="8:00">8:00 - 9:00</option>
-    <option value="9:00">9:00 - 10:00</option>
-    <option value="10:00">10:00 - 11:00</option>
-    <option value="11:00">11:00 - 12:00</option>
-    <option value="12:00">12:00 - 13:00</option>
-    <option value="13:00">13:00 - 14:00</option>
-    <option value="14:00">14:00 - 15:00</option>
-    <option value="15:00">15:00 - 16:00</option>
-    <option value="16:00">16:00 - 17:00</option>
-    <option value="17:00">17:00 - 18:00</option>
-    <option value="18:00">18:00 - 19:00</option>
-    <option value="19:00">19:00 - 20:00</option>
-</select>
-
-    <label for="cliente" th:text="'Seleziona Attività:'"></label>
-    <select id="attivita" name="attivita" class="form-select">
-        <option th:each="attivita : ${listaAttivita}" th:value="${attivita.id}" th:text="${attivita.titolo}" th:selected="${turno.attivita != null AND attivita.id == turno.attivita.id}">
-        </option>
-    </select>
-    <div class="row mt-4">
+	    	<label for="cliente" th:text="'Seleziona Attività:'"></label>
+	    	<select id="attivita" name="attivita" class="form-select">
+	        	<option th:each="attivita : ${listaAttivita}" th:value="${attivita.id}" th:text="${attivita.titolo}" th:selected="${turno.attivita != null AND attivita.id == turno.attivita.id}">
+	        	</option>
+    		</select>
+    	<div class="row mt-4">
         <div class="col-12 text-center">
-            <input type="submit" th:value="'Aggiungi Attività'" class="btn btn-primary">
+            <input type="submit" th:value="'Associa Attività'" class="btn btn-primary">
         </div>
-    </div>
-</form>
+    	</div>
+		</form>
+		</div>
+		
 			
-			
+		<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>	
 		</div>
 
         
