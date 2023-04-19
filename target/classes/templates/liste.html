@@ -120,8 +120,10 @@
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
 						<td>
+
+                        	
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina </a></button>
-                        	<div th:if="${err}">
+                        <div th:if="${err}">
                         	<p th:text="'non puo essere cancellato'">     </p>
                         	</div>
                         	
