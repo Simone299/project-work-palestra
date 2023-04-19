@@ -258,19 +258,25 @@
 						<td style="white-space: pre-wrap; word-break: break-all;" th:text="${o.descrizione}"></td>
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
-						<td>
+						<td class="cella">
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina </a></button>
-                        	<div th:if="${err}">
-                        	<p th:text="'non puo essere cancellato'">     </p>
-                        	</div>
+                        	
                         	
                         	
                         	
                <!-- cont -->         	
                     	</td>
 					</tr>
+					<tr>
+						<td>
+						<div th:if="${err}">
+  						<p th:text="'Impossibile cancellare l\'attività ' + ${o.titolo}"> </p>
+						</div>
+						</td>
+					</tr>
 				</tbody>
 			</table>
+			
 			
 			<h1>LISTA TURNI</h1>
 			<table>

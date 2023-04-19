@@ -104,14 +104,15 @@ public class listeController {
 	}
 	
 	@GetMapping("/cancella3")
-	public String cancellaAttivita(@RequestParam("id") int id)
+	public String cancellaAttivita(@RequestParam("id") int id, Model model)
 	{
 		
 		Attivita attivita = attivitaService.getAttivitaById(id);
 		
-		if(attivita.getAbbonamenti().size() > 0)
+		if(attivita.getAbbonamenti().size() > 0) {
+			model.addAttribute("att", attivita);
 			return "redirect:/lista/3?err";
-		
+		}
 				attivitaService.cancellaAttivita(attivita);
 		
 		
