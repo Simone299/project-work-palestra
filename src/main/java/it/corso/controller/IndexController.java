@@ -114,7 +114,7 @@ public class IndexController {
 	 	model.addAttribute("attivita", attivita);
 	 	
 	 	if(session.getAttribute("utente")==null) {
-	 		attivitaService.registraAttivita(attivita);
+	 		
 	 		boolean ancora = false;
 	 		model.addAttribute("ancora", ancora);
 	 		

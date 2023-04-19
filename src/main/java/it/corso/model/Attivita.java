@@ -3,6 +3,8 @@ package it.corso.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "attivita")
@@ -33,7 +36,29 @@ public class Attivita {
  @Column(name="istruttore")
  private String istruttore;
  
- @OneToMany
+ @Column(name="immagine")
+ private String immagine;
+ 
+ @Transient
+ private MultipartFile immaginereale;
+ 
+ public MultipartFile getImmaginereale() {
+	return immaginereale;
+}
+
+public void setImmaginereale(MultipartFile immaginereale) {
+	this.immaginereale = immaginereale;
+}
+
+public String getImmagine() {
+	return immagine;
+}
+
+public void setImmagine(String immagine) {
+	this.immagine = immagine;
+}
+
+@OneToMany
  (
          mappedBy = "attivita",
          cascade = CascadeType.ALL,
