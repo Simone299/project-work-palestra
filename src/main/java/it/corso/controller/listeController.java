@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.corso.dao.AttivitaDao;
 import it.corso.model.Abbonamento;
@@ -121,12 +122,12 @@ public class listeController {
 	}
 	
 	
-	  @PostMapping("aggiungi3")
-	  public String registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
-		  
-	  attivitaService.registraAttivita(attivita); 
-	  return "redirect:/lista/3"; }
-	 
+	@PostMapping("aggiungi3")
+	public String registraAttivita(@ModelAttribute("attivita") Attivita attivita) {
+
+		attivitaService.registraAttivita(attivita); 
+		return "redirect:/lista/3"; }
+
 	
 
 	/*
@@ -139,26 +140,27 @@ public class listeController {
 	 * 
 	 * return "prova"; }
 	 */
-	
-	@PostMapping("/modificaattivita")
-	public String modificaAttivita(@RequestParam(name = "id") int id,
-			@RequestParam(name="titolo")String titolo,
-			@RequestParam(name="descrizione")String descrizione,
-			@RequestParam(name="prezzo_totale") double prezzo_totale,
-			@RequestParam(name="istruttore") String istruttore,HttpSession session) {
-		
-		Attivita attivita = attivitaService.getAttivitaById(id);
-		attivita.setTitolo(titolo);
-		attivita.setDescrizione(descrizione);
-		attivita.setPrezzo_totale(prezzo_totale);
-		attivita.setIstruttore(istruttore);
-		
-		attivitaService.registraAttivita(attivita);
-		
-		
-		return "redirect:/lista/3";
-	}
-
+	/*
+	 * @PostMapping("/modificaattivita") public String
+	 * modificaAttivita(@RequestParam(name = "id") int id,
+	 * 
+	 * @RequestParam(name="titolo")String titolo,
+	 * 
+	 * @RequestParam(name="descrizione")String descrizione,
+	 * 
+	 * @RequestParam(name="prezzo_totale") double prezzo_totale,
+	 * 
+	 * @RequestParam(name="istruttore") String istruttore,HttpSession session) {
+	 * 
+	 * Attivita attivita = attivitaService.getAttivitaById(id);
+	 * attivita.setTitolo(titolo); attivita.setDescrizione(descrizione);
+	 * attivita.setPrezzo_totale(prezzo_totale); attivita.setIstruttore(istruttore);
+	 * 
+	 * attivitaService.registraAttivita(attivita);
+	 * 
+	 * 
+	 * return "redirect:/lista/3"; }
+	 */
 	
 	/*
 	 * @PostMapping("/creaattivita") public String creaAttivita (@ModelAttribute
@@ -196,14 +198,6 @@ public class listeController {
 		
 		
 		return "redirect:/lista/3";
-	}
-	
-	
-	
-	@GetMapping("/loginAdmin/")
-	public String getpage7() {
-		
-		return "areaadmin";
 	}
 	
 	

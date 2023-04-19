@@ -2,6 +2,8 @@ package it.corso.service;
 
 import java.util.List;
 
+
+
 import it.corso.model.Attivita;
 
 public interface AttivitaService {

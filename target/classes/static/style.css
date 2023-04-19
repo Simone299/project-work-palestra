@@ -559,5 +559,14 @@ div ul li {
 #testo4{
   font-size: 30px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+  
 
+}
+  .prezzototale{
+  display: flex; /* allineo l'immagine e il contenitore delle informazioni affiancati */
+  border: 1px solid gold; /* bordo */
+  border-radius: 4px; /* Arrotonda gli angoli del contenitore */
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2); /* Aggiungi un'ombra al contenitore */
+  margin: 100px 20px 20px 20px;
+  color: #fff;
+  }

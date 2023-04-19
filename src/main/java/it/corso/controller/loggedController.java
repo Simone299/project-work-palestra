@@ -75,7 +75,7 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	utente.setAbbonamenti(abbonamenti);
 	
 	
-	return "redirect:/logged";
+	return "redirect:/areautente";
 }
 
 

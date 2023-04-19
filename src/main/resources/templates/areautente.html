@@ -22,15 +22,13 @@
     <h1 class="benvenuto" th:text="'Benvenuto nella tua area riservata ' + ${utente.nome_utente}"></h1> 
     <h2 >Abbonamenti Attivi</h2>
     <section class="abbonamenti-attivi" th:each="a : ${abbonamentiattivi}">
-     <!-- DA FORMATTARE E AGGIUSTARE --><div><p th:text="'prezzo totale : '+${prezzototale}"><p></div>
+
         
         <div class="card-container-utente" >
           <div class="card-utente" >
-            <h3>Abbonamento</h3>
-            <p th:text="'attività in abbonamento : ' + ${a.attivita.titolo}"></p>
-            <p th:text="'valido fino al : ' +  ${#temporals.format(a.data_fine, 'dd/MM/yyyy')}">Valido fino al 30/06/2023</p>
-           
-            <button>c'è da metterci dentro l'href alla riga sopra in html</button>
+            <h3 th:text="'Abbonamento ' + ${a.attivita.titolo}"></h3>
+            <p th:text="'valido fino al : ' +  ${#temporals.format(a.data_fine, 'dd/MM/yyyy')}"></p>
+           	<p th:text="'Costo abbonamento: '+ ${a.importo_totale}"></p>
           </div>
         
           <!-- Altre card abbonamenti attivi -->
@@ -41,8 +39,7 @@
         <h2>Abbonamenti Scaduti</h2>
         <div class="card-container-utente">
           <div class="card-utente">
-            <h3>Abbonamento</h3>
-            <p th:text="'attività in abbonamento : ' + ${t.attivita.titolo}"></p>
+            <h3 th:text="'Abbonamento ' + ${a.attivita.titolo}"></h3>
             <p th:text="'SCADUTO ' "></p>
              <p><a th:href="@{areautente/rinnova(id=${t.id})}">clicca qui per rinnovare</a></p>
               
@@ -52,7 +49,7 @@
         </div>
       </section>
     
-    
+    <div class=prezzototale><p th:text="'Costo totale dei tuoi abbonamenti: '+${prezzototale}"><p></div>
     
     <footer>
         <div class="footer-info">

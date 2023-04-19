@@ -178,6 +178,14 @@
 				text-align: center;
 				width: 20px;
 			}
+			
+			.nodelete {
+				color: red;
+				font-size: 16px;
+				text-align: center;
+				
+				
+			}
        
         
 	</style>
@@ -209,10 +217,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>
-			<!-- ////TODO -->
-			<!-- <a th:href="@{/lista/1}">Torna all'Area admin</a>
-			<a href="liste">Torna all'Area admin</a>  finire link-->
+			<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia">◄</a></button>
 		</div>
 		<div th:if="${mostraDiv2}">
 			<h1>LISTA ABBONAMENTI</h1>
@@ -232,14 +237,14 @@
 							<td th:text="${o.utente.nome_utente}"></td>
 							<td th:text="${o.attivita.titolo}"></td>
 							<td th:text="${o.importo_totale}"></td>
-							<td th:text="${o.data_inizio}"></td>
-							<td th:text="${o.data_fine}"></td>
+							<td th:text="${#temporals.format(o.data_inizio, 'dd/MM/yyyy')}"></td>
+							<td th:text="${#temporals.format(o.data_fine, 'dd/MM/yyyy')}"></td>
 							
 						</tr>
 					</tbody>
 				</table>
 			
-				<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>
+				<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia">◄</a></button>
 		</div>
 		<div th:if="${mostraDiv3}">
 			<h1>LISTA ATTIVITA E CALENDARIO</h1>
@@ -258,14 +263,24 @@
 						<td style="white-space: pre-wrap; word-break: break-all;" th:text="${o.descrizione}"></td>
 						<td th:text="${o.prezzo_totale}"></td>
 						<td th:text="${o.istruttore}"></td>
+
 						<td class="cella">
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina </a></button>
                         	
+
+						<td>
+
+                        	
+                        	
+                        
+
                         	
                         	
                         	
                <!-- cont -->         	
                     	</td>
+                    	
+                    	
 					</tr>
 					<tr>
 						<td>
@@ -276,8 +291,11 @@
 					</tr>
 				</tbody>
 			</table>
-			
-			
+
+			<div class=nodelete th:if="${err}">
+                        	<h2 th:text="'!!!Attività impossibile da eliminare, legata ad abbonamento attivo!!!'"></h2>
+                        	</div>
+
 			<h1>LISTA TURNI</h1>
 			<table>
 				<thead>
@@ -302,7 +320,7 @@
 				</tbody>
 			</table>
 			<div class="form-container">
-			<form method="POST" action="aggiungi3"  th:object="${attivita}" class="form1">
+			<form enctype="multipart/form-data" method="POST" action="aggiungi3"  th:object="${attivita}" class="form1">
 			<h1 style="margin-top: 0px;">AGGIUNGI ATTIVITA</h1>
     			<label>Titolo:</label>
 			    <input type="text" th:field="*{titolo}" />
@@ -318,7 +336,10 @@
 			    <label>Istruttore:</label>
 			    <input type="text" th:field="*{istruttore}" />
 			    <br />
+			    <label>Inserisci immagine</label>
+			    <input type="file" th:field="*{immaginereale}"  ></input>
 			    <input type="submit" value="Salva Attivita"/>
+			    
 			</form>
 			
 			
@@ -364,7 +385,7 @@
 		</div>
 		
 			
-		<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia"><--</a></button>	
+		<button class="freccia-btn"><a th:href="@{/loginAdmin}" class="freccia">◄</a></button>	
 		</div>
 
         
