@@ -35,10 +35,12 @@ public class loggedController {
     private UtenteService utenteService;
 ////////////////////////////////////////////////////////////////////////////	
 	@GetMapping
-	public String getPage(Model model,HttpSession session) {
+	public String getPage(Model model,HttpSession session,@RequestParam(name = "confermato",required = false) String confermato) {
 		
 		if(session.getAttribute("utente")==null)
 			return "redirect:/";
+		
+		model.addAttribute("confermato", confermato != null);
 		
 		List<Attivita> listaAttivita = attivitaService.getAttivita();
 		Attivita attivita = new Attivita();
@@ -59,6 +61,7 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	
 	Attivita attivita=attivitaService.getAttivitaById(id);
 	Utente utente =(Utente) session.getAttribute("utente");
+	 
 	
 	
 	Abbonamento abbonamento= new Abbonamento();
@@ -66,7 +69,7 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	abbonamento.setUtente(utente);
 	abbonamento.setData_inizio(LocalDateTime.now());
 	abbonamento.setData_fine(LocalDateTime.now().plusDays(30));
-	abbonamento.setImporto_toatale(attivita.getPrezzo_totale()*8);
+	abbonamento.setImporto_toatale(attivita.getPrezzo_totale() * 8 * 0.85);
 	
 	abbonamentoService.registraAbbonamento(abbonamento);
 	
@@ -75,7 +78,7 @@ public String registraAbbonamento(@RequestParam(name="id",required = false) int 
 	utente.setAbbonamenti(abbonamenti);
 	
 	
-	return "redirect:/areautente";
+	return "redirect:/logged?confermato";
 }
 
 

@@ -253,7 +253,7 @@
 					<tr>
 						<th>Titolo</th>
 						<th>Descrizione</th>
-						<th>Prezzo totale</th>
+						<th>Prezzo lezione</th>
 						<th>Istruttore</th>
 					</tr>
 				</thead>
@@ -266,29 +266,10 @@
 
 						<td class="cella">
                         	<button class="elimina"><a th:href="@{cancella3(id=${o.id})}">Elimina </a></button>
-                        	
-
-						<td>
-
-                        	
-                        	
-                        
-
-                        	
-                        	
-                        	
-               <!-- cont -->         	
-                    	</td>
-                    	
+                        	</td>
                     	
 					</tr>
-					<tr>
-						<td>
-						<div th:if="${err}">
-  						<p th:text="'Impossibile cancellare l\'attività ' + ${o.titolo}"> </p>
-						</div>
-						</td>
-					</tr>
+				
 				</tbody>
 			</table>
 

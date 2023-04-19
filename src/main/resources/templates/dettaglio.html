@@ -26,13 +26,13 @@
     <main>
         <div class="content-container">
             <div class="image-container">
-                <img src="image.jpg" alt="immagine">
+                <img th:src="@{${attivita.immagine}}" alt="immagine">
             </div>
             <div class="info-container" th:object="${attivita}" >
             <h2 th:text="'Abbonamento ' + ${attivita.titolo}"></h2>
 
             <div th:text="'Descrizione: '+ ${attivita.descrizione}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
-            <div th:text="'Costo lezione: ' + ${attivita.prezzo_totale}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
+            <div th:text="'Costo lezione: ' + ${attivita.prezzo_totale} + ' €  offerta promo per 8 lezioni : ' + ${#numbers.formatDecimal((attivita.prezzo_totale * 8 * 0.85), 0, 'POINT', 2, 'COMMA')} +' € '" style="word-wrap: break-word; margin-bottom: 14px;"></div>
             <div th:text="'Istruttore: ' + ${attivita.istruttore}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
                 <div th:if="${ancora}"><button class="buy-btn" ><a th:href="@{logged/registraabbonamento(id=${attivita.id})}">Acquista Abbonamento</a></button></div>
             </div>

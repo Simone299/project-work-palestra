@@ -160,8 +160,9 @@
 	<div id="attiv" class="tit"><h2 id="testo4">ELENCO ATTIVITA</h2></div>
 
 	<div class="card" th:each="a : ${attivita}">
-		<div class="card-img">
-			<img src="images.jpg" alt="Immagine 1">
+		<div class="card-img"   >
+			<img th:src="@{${a.immagine}}" alt="Immagine 1">
+			
 		</div>
 		<div class="card-body" >
 
