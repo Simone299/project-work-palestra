@@ -38,6 +38,7 @@ public class Attivita {
  
  @Column(name="immagine")
  private String immagine;
+ 
  @Column(name="informazioni")
  private String informazioni;
  

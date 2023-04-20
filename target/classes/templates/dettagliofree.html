@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio</title>
+    <link rel="stylesheet" type="text/css" href="Style2.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+    	
+        <img src="download.jpg" alt="Logo della palestra" id="logo">
+        <nav>
+            <ul>
+                 <li><a th:href="@{/}">Home</a></li>
+                 <li><a href="#gym">Contatti</a></li>
+          
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <div class="content-container">
+            <div class="image-container">
+                <img th:src="@{${attivita.immagine}}" alt="immagine">
+            </div>
+            <div class="info-container" th:object="${attivita}" >
+            <h2 th:text="'Abbonamento ' + ${attivita.titolo}"></h2>
+<div th:text="'Descrizione: '+ ${attivita.informazioni}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
+            <!--<div th:text="'Descrizione: '+ ${attivita.descrizione}" style="word-wrap: break-word; margin-bottom: 14px;"></div>-->
+            <div th:text="'Costo singola lezione: ' + ${attivita.prezzo_totale} + ' €  offerta promo per 8 lezioni : ' + ${#numbers.formatDecimal((attivita.prezzo_totale * 8 * 0.85), 0, 'POINT', 2, 'COMMA')} +' € '" style="word-wrap: break-word; margin-bottom: 14px;"></div>
+            <div th:text="'Istruttore: ' + ${attivita.istruttore}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-info">
+            <h4 id="gym">Space Gym</h4>
+            <p id="indirizzi">Via della Palestra, 1 - 00100 Roma</p>
+            <p id="contatti">Tel: +39 06 1234567 - Email: info@spacegym.it</p>
+            <p></p>
+        </div>
+        <div class="footer-social">
+            <h4>Seguici su</h4>
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+        </div>
+        <div class="footer-credits">
+            <p>© 2023 Space Gym. Tutti i diritti riservati.</p>
+        </div>
+       
+    </footer>
+
+</body>
+</html>
