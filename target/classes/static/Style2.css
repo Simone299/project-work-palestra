@@ -399,7 +399,7 @@ div ul li {
 
 
 .buy-btn {
-    background-color: gold;
+    background-color:  #d4af37;
     color: #333;
     border: none;
     padding: 10px 20px;
@@ -412,7 +412,7 @@ div ul li {
   }
   
   .buy-btn:hover {
-    background-color: #d4af37;
+    background-color: gold;
     color:#333;
   }
   
@@ -433,4 +433,10 @@ div ul li {
 .logo-social{
   width: 40px;
   height: 40px;
+}
+
+
+.acquista{
+	
+	color: #333;
 }

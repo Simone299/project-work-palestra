@@ -28,7 +28,7 @@
     </header>
    
     <h1 class="benvenuto" th:text="'Benvenuto nella tua area riservata ' + ${utente.nome_utente}"></h1> 
-    <h2 >Abbonamenti Attivi</h2>
+    <h2 class="scaduti">Abbonamenti Attivi</h2>
     <section class="abbonamenti-attivi" th:each="a : ${abbonamentiattivi}">
 
         
