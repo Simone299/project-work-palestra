@@ -36,15 +36,16 @@
           <div class="card-utente" >
             <h3 th:text="'Abbonamento ' + ${a.attivita.titolo}"></h3>
             <p th:text="'valido fino al : ' +  ${#temporals.format(a.data_fine, 'dd/MM/yyyy')}"></p>
-           	<p th:text="'Costo abbonamento: '+ ${#numbers.formatDecimal(a.importo_totale, 0, 'POINT', 2, 'COMMA')}"></p>
+           	<p th:text="'Costo abbonamento: '+ ${#numbers.formatDecimal(a.importo_totale, 0, 'POINT', 2, 'COMMA')} + '€'"></p>
           </div>
         
           <!-- Altre card abbonamenti attivi -->
         </div>
       </section>
       
-      <section class="abbonamenti-disponibili"   th:each="t : ${abbonamentiscaduti}">
-        <h2 class="scaduti">Abbonamenti Scaduti</h2>
+     
+        <h2 class="scaduti">Abbonamenti Scaduti</h2> 
+        <section class="abbonamenti-disponibili"   th:each="t : ${abbonamentiscaduti}">
         <div class="card-container-utente">
           <div class="card-utente">
             <h3 th:text="'Abbonamento ' + ${t.attivita.titolo}"></h3>
@@ -57,7 +58,7 @@
         </div>
       </section>
     
-    <div class=prezzototale><p th:text="'Costo totale dei tuoi abbonamenti: '+${#numbers.formatDecimal(prezzototale, 0, 'POINT', 2, 'COMMA')}"><p></div>
+    <div class=prezzototale><p th:text="'Costo totale dei tuoi abbonamenti: '+${#numbers.formatDecimal(prezzototale, 0, 'POINT', 2, 'COMMA')} + '€'"><p></div>
     
     <footer>
         <div class="footer-info">

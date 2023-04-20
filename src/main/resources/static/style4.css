@@ -14,6 +14,7 @@ body {
     margin-right: auto;
 }
 
+
 header {
 	display: flex;
 	align-items: center;
@@ -88,6 +89,26 @@ footer {
   display: inline-block;
 }
 
+  .card-img {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  height: 300px; 
+  position: relative; 
+}
+
+.card-img img {
+  max-width: 100%;
+  height: auto;
+  background-color: #fff;
+  width: 100%;
+  object-fit: cover;
+  height: 100%; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+}
 
  .card-container-utente {
     margin: 50px;
