@@ -56,30 +56,6 @@ public class loggedController {
 /////////////////////////////////////////////////////////////////////////////
 
 
-@GetMapping("registraabbonamento")
-public String registraAbbonamento(@RequestParam(name="id",required = false) int id,HttpSession session) {
-	
-	Attivita attivita=attivitaService.getAttivitaById(id);
-	Utente utente =(Utente) session.getAttribute("utente");
-	 
-	
-	
-	Abbonamento abbonamento= new Abbonamento();
-	abbonamento.setAttivita(attivita);
-	abbonamento.setUtente(utente);
-	abbonamento.setData_inizio(LocalDateTime.now());
-	abbonamento.setData_fine(LocalDateTime.now().plusDays(30));
-	abbonamento.setImporto_toatale(attivita.getPrezzo_totale() * 8 * 0.85);
-	
-	abbonamentoService.registraAbbonamento(abbonamento);
-	
-	List<Abbonamento> abbonamenti = utente.getAbbonamenti();
-	abbonamenti.add(abbonamento);
-	utente.setAbbonamenti(abbonamenti);
-	
-	
-	return "redirect:/logged?confermato";
-}
 
 
 
