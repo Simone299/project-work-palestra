@@ -35,6 +35,12 @@ public class IndexController {
 	private AttivitaService attivitaService;
     @Autowired
     private TurnoService turnoService;
+    
+    
+    
+    private boolean ancora;
+    
+    
 	@GetMapping
 	public String getPage(Model model,@RequestParam(name="err",required = false) String errore1,
 			@RequestParam(name="err2",required = false) String errore2,
@@ -114,11 +120,13 @@ public class IndexController {
 	 	Attivita attivita = attivitaService.getAttivitaById(id);
 	 	model.addAttribute("attivita", attivita);
 	 	
+
 	 
 	 	
 	 	if(session.getAttribute("utente")==null) {
+
 	 		
-	 		boolean ancora = false;
+	 		ancora = false;
 	 		model.addAttribute("ancora", ancora);
 	 		
 	 		return "dettagliofree";

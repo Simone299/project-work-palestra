@@ -160,7 +160,7 @@
 	<div id="attiv" class="tit"><h2 id="testo4">ELENCO ATTIVITA</h2></div>
 
 	<div class="card" th:each="a : ${attivita}">
-		<div class="card-img"   >
+		<div class="card-img">
 			<img th:src="@{${a.immagine}}" alt="Immagine 1">
 			
 		</div>
@@ -178,15 +178,17 @@
         <table class="tab-calendario">
             <thead>
                 <tr>
-                    <th>Giorno</th>
+                    
                     <th>Attività</th>
+                    <th>Giorno</th>
                     <th>Orario</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="t : ${turni}">
-                    <td th:text="${t.giorno_settimana}">Lunedi</td>
+                    
                     <td th:text="${t.attivita.titolo}">Crossfit</td>
+                    <td th:text="${t.giorno_settimana}">Lunedi</td>
                     <td th:text=${t.fascia_oraria}>10:00 - 11:00</td>
                 </tr>
               

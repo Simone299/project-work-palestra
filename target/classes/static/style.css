@@ -390,14 +390,25 @@ main {
   margin-top: 2%;
 }
 
-#lista-utenti, #lista-abbonamenti, #lista-attivita, #mio-profilo {
-  border: 1px solid #ddd;
+#lista-utenti, #lista-abbonamenti  {
+  border: 3px solid gold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 20px;
   width: calc(50% - 20px);
   margin-bottom: 20px;
   box-sizing: border-box;
   background-color: #ddd;
+}
+
+#lista-attivita{
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	padding: 20px;
+	box-sizing: border-box;
+  	background-color: #ddd;
+	width:100%;
+	text-align: center;
+	border: 3px solid gold;
+	height: 130px;
 }
 
 .nero {
