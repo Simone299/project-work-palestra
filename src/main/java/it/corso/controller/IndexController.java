@@ -47,6 +47,7 @@ public class IndexController {
 			@RequestParam(name="err3",required = false) String errore3,
 			@RequestParam(name="ceck",required = false) String ceck){
        
+		
 		model.addAttribute("errore3", errore3 != null);
 		model.addAttribute("errore2", errore2 != null);
 		model.addAttribute("ceck", ceck != null);
@@ -119,16 +120,20 @@ public class IndexController {
 	 	Attivita attivita = attivitaService.getAttivitaById(id);
 	 	model.addAttribute("attivita", attivita);
 	 	
-	 	if(session.getAttribute("utente") == null) {
+
+	 
+	 	
+	 	if(session.getAttribute("utente")==null) {
+
 	 		
 	 		ancora = false;
 	 		model.addAttribute("ancora", ancora);
 	 		
-	 		return "dettaglio";
+	 		return "dettagliofree";
 	 	
 	 	}
 	 	
-	 	return "redirect:/";
+	 	return "dettagliofree";
 	 	
 	 }
 	 

@@ -25,6 +25,8 @@ public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSe
 	Attivita attivita = attivitaService.getAttivitaById(id);
 	model.addAttribute("attivita", attivita);
 	
+
+	
 	double prezzogiorno=attivita.getPrezzo_totale();
 	double prezzosconto=prezzogiorno* 8 * 0.85;
 	model.addAttribute("prezzosconto", prezzosconto);
@@ -44,7 +46,7 @@ public String getAttivita(@RequestParam(name="id",required = false)int id,HttpSe
 @GetMapping("/////ass/")
 public String acquistaAttivita(@RequestParam("id")int id,HttpSession session) {
 	
-
+	
 	
 return "redirect:/logged";
 }
