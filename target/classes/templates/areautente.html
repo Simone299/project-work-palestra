@@ -2,8 +2,16 @@
 <html   xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Area Utente</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-	
+    <link rel="stylesheet" type="text/css" href="style4.css">
+	<style>
+		section{
+		
+			margin: 0px;	
+			
+		}
+		
+		
+	</style>
 
 </head>
 <body>
@@ -35,13 +43,13 @@
         </div>
       </section>
       
-      <section      class="abbonamenti-disponibili"   th:each="t : ${abbonamentiscaduti}">
-        <h2>Abbonamenti Scaduti</h2>
+      <section class="abbonamenti-disponibili"   th:each="t : ${abbonamentiscaduti}">
+        <h2 class="scaduti">Abbonamenti Scaduti</h2>
         <div class="card-container-utente">
           <div class="card-utente">
             <h3 th:text="'Abbonamento ' + ${t.attivita.titolo}"></h3>
             <p th:text="'SCADUTO ' "></p>
-             <p><a th:href="@{areautente/rinnova(id=${t.id})}">clicca qui per rinnovare</a></p>
+             <p class="rinnova2"><a class="rinnova" th:href="@{areautente/rinnova(id=${t.id})}">clicca qui per rinnovare</a></p>
               
           </div>
          
