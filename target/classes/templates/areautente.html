@@ -43,8 +43,9 @@
         </div>
       </section>
       
-      <section class="abbonamenti-disponibili"   th:each="t : ${abbonamentiscaduti}">
-        <h2 class="scaduti">Abbonamenti Scaduti</h2>
+     
+        <h2 class="scaduti">Abbonamenti Scaduti</h2> 
+        <section class="abbonamenti-disponibili"   th:each="t : ${abbonamentiscaduti}">
         <div class="card-container-utente">
           <div class="card-utente">
             <h3 th:text="'Abbonamento ' + ${t.attivita.titolo}"></h3>
