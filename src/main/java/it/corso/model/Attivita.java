@@ -38,6 +38,9 @@ public class Attivita {
  
  @Column(name="immagine")
  private String immagine;
+ @Column(name="informazioni")
+ private String informazioni;
+ 
  
  @Transient
  private MultipartFile immaginereale;
@@ -130,6 +133,14 @@ public List<Turno> getTurni() {
 
 public void setTurni(List<Turno> turni) {
 	this.turni = turni;
+}
+
+public String getInformazioni() {
+	return informazioni;
+}
+
+public void setInformazioni(String informazioni) {
+	this.informazioni = informazioni;
 }
  
  
