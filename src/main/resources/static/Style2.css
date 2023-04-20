@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
@@ -426,4 +427,10 @@ div ul li {
 .totale{
 	
 	background-color:  #333;
+}
+
+
+.logo-social{
+  width: 40px;
+  height: 40px;
 }
