@@ -1,0 +1,218 @@
+@charset "ISO-8859-1";
+
+
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+    background-color: #333;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fff;
+	padding: 10px;
+	color: #333 ;
+  border: 4px solid gold ;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  
+}
+
+nav ul li {
+	margin-left: 40px;
+  margin-right: 40px;
+  
+}
+
+nav ul li a {
+	color:  #333;
+	text-decoration: none;
+  margin-top: 0%;
+  font-size: 20px;
+}
+
+
+
+h2 {
+	font-size: 24px;
+	color: #fff;
+	margin-bottom: 10px;
+	margin-left:500px;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+#logo {
+	height: 70px;
+	margin-right: 20px;
+  width: 100px;
+}
+
+
+footer {
+  background-color: #fff;
+  color: #333;
+  padding: 5px;
+  text-align: center;
+  margin-top: 70px;
+  border: 4px solid gold ;
+  position: relative;
+  bottom: -8px;
+}
+
+#contatti{
+
+  display: inline-block;
+}
+
+#indirizzi{
+  display: inline-block;
+}
+
+
+ .card-container-utente {
+    margin: 50px;
+    float: left;
+    width: 40%;
+    border: 4px solid gold;
+    border-radius: 5px;
+}
+
+.card-utente {
+  	margin: 0 auto;
+  	width: 100%;
+  	background-color: black;
+  	text-align: center;
+  	color: gold;
+  	font-size: 20px;
+  	
+  	
+}
+
+
+
+.card-utente button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-utente button:hover {
+  background-color: gold;
+  color: #333;
+}
+
+
+ .card-utente{
+ 	
+ 	display:inline-block;
+ 
+ }
+
+.benvenuto{
+  margin-top: 200px;
+    text-align: center;
+    color: #fff;
+    border: 4px solid gold;
+    margin-bottom: 70px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+
+
+.tit2{
+    width: auto;
+    display:inline-block;
+  	margin-top: 200px;
+  	text-align: center;
+  	color: gold;
+  	overflow: hidden; /* nasconde il testo inizialmente */
+  	white-space: nowrap; /* evita che il testo venga a capo */
+  	animation: typing 4s steps(100) 1s 1 normal both; /* animazione */
+  	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  	font-size: 50px;
+  	
+}
+
+@keyframes typing {
+  from {
+    width: 0%; /* parte da zero */
+  }
+  to {
+    width: 100%; /* arriva al 100% */
+  }
+  }
+  
+  
+  
+  .frecc{
+  	
+  	text-decoration: none;
+	margin-top: 25px;
+  }
+  
+  
+  .prezzototale{
+  display: flex; /* allineo l'immagine e il contenitore delle informazioni affiancati */
+  border: 1px solid gold; /* bordo */
+  border-radius: 4px; /* Arrotonda gli angoli del contenitore */
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2); /* Aggiungi un'ombra al contenitore */
+  margin: 100px 20px 20px 20px;
+  color: #fff;
+  clear: both;
+  padding: 20px;
+  font-size: 25px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  .scaduti{
+  	
+  	clear: both;
+  }
+  
+  
+  
+  	.rinnova{
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 50px;
+}
+
+.rinnova:hover {
+  background-color: gold;
+  color: #333;
+}
+
+
+.rinnova2{
+	
+	margin-top: 50px;
+}

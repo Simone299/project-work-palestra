@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
@@ -222,6 +223,7 @@ a[href*="dettaglio"] {
 .tit{
   display: inline-block;
   margin: 50px auto;
+  margin-top: 20px;
   text-align: center;
   width: 100%;
 
@@ -280,18 +282,19 @@ td{
 }
 
 
-.card-container-utente{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 20px 0;
+
+  .card-container-utente {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: -100px 10px;
 }
 
 .card-utente {
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 20px;
-  width: calc(50% - 10px);
+  width:35%;
   margin-bottom: 20px;
   border: 4px solid gold ;
 }
@@ -314,20 +317,29 @@ td{
 
 .abbonamenti-attivi{
   margin-top: 200px;
+  margin-left: 10px;
  
 }
 
 .abbonamenti-disponibili{
   margin-top: 100px;
-  margin-bottom: 200px;
+
+  margin-left: 10px;
   
 }
 
+.attivo{
+	
+	text-align:center;
+	margin-left: 1000px;
+}
+
 .benvenuto{
-  margin-top: 300px;
-  text-align: center;
-  color: #fff;
-  border: 4px solid gold 
+  margin-top: 200px;
+    text-align: center;
+    color: #fff;
+    border: 4px solid gold;
+    margin-bottom: 70px;
 }
 
 main {
@@ -475,29 +487,23 @@ div ul li {
 
 
   .text5{
-    font-size: 150px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-shadow: 3px 1px 1px rgba(0, 0, 0, 4);
+  font-size: 150px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-shadow: 3px 1px 1px rgba(0, 0, 0, 4);
 
-    animation: pause 3s forwards, blink 5s linear infinite, rotate 2s ease-in-out infinite alternate;
-    transform-origin: center;
+  animation: pause 3s forwards, blink 5s linear infinite, rotate 2s ease-in-out infinite alternate, gold-to-black 2s ease-in-out infinite alternate;
+  transform-origin: center;
+}
 
-    
-    
-
-
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-      animation-delay: 1s;
-    }
+  to {
+    transform: rotate(360deg);
+    animation-delay: 1s;
   }
-
+}
 
 @keyframes blink {
   0% {
@@ -511,6 +517,20 @@ div ul li {
   }
 }
 
+@keyframes gold-to-black {
+  0% {
+    color: black;
+  }
+  100% {
+    color: gold;
+  }
+}
+
+.highlight {
+  animation: gold-to-black 2s ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+  
 #apri-admin:hover{
   cursor: pointer;
 }
@@ -569,4 +589,37 @@ div ul li {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2); /* Aggiungi un'ombra al contenitore */
   margin: 100px 20px 20px 20px;
   color: #fff;
+  }
+
+  
+  
+  .tit2{
+    width: auto;
+    display:inline-block;
+  	margin-top: 200px;
+  	text-align: center;
+  	color: gold;
+  	overflow: hidden; /* nasconde il testo inizialmente */
+  	white-space: nowrap; /* evita che il testo venga a capo */
+  	animation: typing 4s steps(100) 1s 1 normal both; /* animazione */
+  	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  	font-size: 50px;
+  	
+}
+
+@keyframes typing {
+  from {
+    width: 0%; /* parte da zero */
+  }
+  to {
+    width: 100%; /* arriva al 100% */
+  }
+  }
+  
+  
+  
+  .frecc{
+  	
+  	text-decoration: none;
+	margin-top: 25px;
   }
