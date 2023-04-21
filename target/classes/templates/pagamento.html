@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conferma Acquisto</title>
-    <link rel="stylesheet" type="text/css" href="style5.css">
+   
     
     <style >
     *{
@@ -97,8 +97,20 @@ input[type="submit"]:hover {
   transition: all 0.3s ease;
 }
 
-
-  
+.freccia{
+        
+        	font-size: 30px;
+        	text-decoration: none;
+        	background-color: gold; 
+        	color:  #333;
+        	
+        }
+        
+        .freccia-btn{
+        
+        	text-decoration: none;
+        	background-color: gold;
+        	margin-top:20px; }
 
 </style>
 </head>
@@ -132,7 +144,8 @@ input[type="submit"]:hover {
             </div>
         </div>
     </main>
-    
+    <!--<button class="freccia-btn"><a th:href="@{/dettaglio}" class="freccia">◄</a></button>-->
+    <a href="javascript:history.back()" class="freccia freccia-btn"  >◄ torna indietro</a>
     <!-- Footer -->
    
 

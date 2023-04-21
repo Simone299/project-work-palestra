@@ -34,7 +34,7 @@
             <!--<div th:text="'Descrizione: '+ ${attivita.descrizione}" style="word-wrap: break-word; margin-bottom: 14px;"></div>-->
             <div th:text="'Costo singola lezione: ' + ${attivita.prezzo_totale} + ' €  offerta promo per 8 lezioni : ' + ${#numbers.formatDecimal((attivita.prezzo_totale * 8 * 0.85), 0, 'POINT', 2, 'COMMA')} +' € '" style="word-wrap: break-word; margin-bottom: 14px;"></div>
             <div th:text="'Istruttore: ' + ${attivita.istruttore}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
-                <div th:if="${ancora}"><button class="buy-btn" ><a th:href="@{dettaglio/confermaAcquisto(id=${attivita.id})}">Acquista Abbonamento</a></button></div>
+                <div th:if="${ancora}"><button class="buy-btn" ><a th:href="@{dettaglio/confermaAcquisto(id=${attivita.id})}" style="text-decoration:none;color:#fff;">Acquista Abbonamento</a></button></div>
             </div>
         </div>
     </main>
