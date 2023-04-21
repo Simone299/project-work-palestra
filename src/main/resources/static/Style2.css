@@ -430,8 +430,7 @@ div ul li {
 
 
 .totale{
-	
-	background-color:  #333;
+background-color:  #333;
 }
 
 
@@ -442,24 +441,22 @@ div ul li {
 
 
 .acquista{
-	
-	color: #333;
+color: #333;
 }
 
-.freccia{
+.freccia{      
+font-size: 30px;
+text-decoration: none;
+background-color: gold; 
+color:  #333;
+                   
+}
         
-            font-size: 30px;
-            text-decoration: none;
-            background-color: gold; 
-            color:  #333;
-            
-            
-            
-        }
-        
-        .freccia-btn{
-        
-            text-decoration: none;
-            background-color: gold;
-            margin-top:20px; }
+.freccia-btn{       
+text-decoration: none;
+background-color: gold;
+margin-top:20px; 
+margin-left: 20px;
+
+}
             
