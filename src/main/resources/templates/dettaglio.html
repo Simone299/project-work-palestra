@@ -34,11 +34,11 @@
             <!--<div th:text="'Descrizione: '+ ${attivita.descrizione}" style="word-wrap: break-word; margin-bottom: 14px;"></div>-->
             <div th:text="'Costo singola lezione: ' + ${attivita.prezzo_totale} + ' €  offerta promo per 8 lezioni : ' + ${#numbers.formatDecimal((attivita.prezzo_totale * 8 * 0.85), 0, 'POINT', 2, 'COMMA')} +' € '" style="word-wrap: break-word; margin-bottom: 14px;"></div>
             <div th:text="'Istruttore: ' + ${attivita.istruttore}" style="word-wrap: break-word; margin-bottom: 14px;"></div>
-                <div th:if="${ancora}"><button class="buy-btn" ><a th:href="@{dettaglio/confermaAcquisto(id=${attivita.id})}">Acquista Abbonamento</a></button></div>
+                <div th:if="${ancora}"><button class="buy-btn" ><a th:href="@{dettaglio/confermaAcquisto(id=${attivita.id})}" style= "text-decoration:none; color:#fff;">Acquista Abbonamento</a></button></div>
             </div>
         </div>
     </main>
-
+<a href="javascript:history.back()" class="freccia freccia-btn"  >◄</a>
     <!-- Footer -->
     <footer>
         <div class="footer-info">
@@ -49,9 +49,9 @@
         </div>
         <div class="footer-social">
             <h4>Seguici su</h4>
-            <a href="#"><img src="facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+  <a href="#"><img class="logo-social" src="logoface.png" alt="Facebook"></a>
+                <a href="#"><img class="logo-social" src="logotwitter.png" alt="Twitter"></a>
+                <a href="#"><img class="logo-social" src="logoinsta.jpeg" alt="Instagram"></a>
         </div>
         <div class="footer-credits">
             <p>© 2023 Space Gym. Tutti i diritti riservati.</p>

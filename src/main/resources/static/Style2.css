@@ -326,9 +326,12 @@ main {
 }
 
 .image-container img {
-  width: 100%; /* Ridimensiona l'immagine per adattarla al contenitore */
-  height: auto;
+  width: 100%;
+  height: 100%; /* Modifica questa riga */
+  object-fit: contain; /* Modifica questa riga per adattare l'immagine ai bordi del contenitore */
 }
+
+
 
 .info-container {
   width: 75%; /* Imposta una larghezza fissa per l'immagine e il contenitore delle informazioni */
@@ -409,17 +412,19 @@ div ul li {
     transition: all 0.3s ease;
     margin-top: 10px;
     margin-bottom: 10px;
+    
   }
   
   .buy-btn:hover {
     background-color: gold;
     color:#333;
+    
   }
   
   
   
   a[href*="logged"] {
-  color: #fff;
+  color: #333;
   text-decoration: none;
 }
 
@@ -440,3 +445,21 @@ div ul li {
 	
 	color: #333;
 }
+
+.freccia{
+        
+            font-size: 30px;
+            text-decoration: none;
+            background-color: gold; 
+            color:  #333;
+            
+            
+            
+        }
+        
+        .freccia-btn{
+        
+            text-decoration: none;
+            background-color: gold;
+            margin-top:20px; }
+            
