@@ -51,6 +51,13 @@ nav ul li a {
   font-size: 20px;
 }
 
+li:hover{
+	
+	background-color: gold;
+	border-radius: 25%;
+	padding: 10px;
+}
+
 
 
 h2 {

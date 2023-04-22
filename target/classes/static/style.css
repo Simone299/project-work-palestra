@@ -49,6 +49,16 @@ nav ul li a {
 
 
 
+
+li:hover{
+	
+	background-color: gold;
+	border-radius: 25%;
+	padding: 10px;
+}
+
+
+
 h2 {
 	font-size: 24px;
 	color: #fff;
@@ -72,8 +82,35 @@ label {
 input[type="text"], input[type="email"], input[type="password"] {
 	padding: 10px;
 	border-radius: 5px;
-	border: 1px solid black;
+	border: 2px solid black;
 	margin-bottom: 10px;
+	background: transparent;
+	border-bottom: 3px solid gold;
+	color:black;
+	font-size: 18px;
+}
+
+input:focus{
+	
+	animation: pulsate 1s infinite;
+	background-color: white;
+	
+}
+
+
+@keyframes pulsate {
+	0% {
+		outline: 1px solid gold;
+	}
+	
+	50% {
+		outline: 3px solid gold;
+	}
+	
+	100% {
+		outline: 1px solid gold;
+	}
+	
 }
 
 input[type="submit"] {
@@ -84,7 +121,8 @@ input[type="submit"] {
 	border: 1px solid black;
 	cursor: pointer;
  	margin-bottom: 23px;
- 	margin-top: 10px;
+ 	margin-top: 15px;
+ 	font-size: 18px;
 }
 
 input[type="submit"]:hover {
@@ -120,14 +158,53 @@ input[type="submit"]:hover {
   margin-left: 2.7%;
   margin-right: auto;
   margin-top: 10%;
-  border: 1px solid gold ;
+  
   text-align: center;
+	position: relative;
+	
+	
+}
 
+
+
+
+.sezione::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid gold;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s, opacity 0.5s;
+  pointer-events: none;
+}
+
+/* Quando passi sopra con il mouse, fai apparire il bordo */
+.sezione:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+  animation: pulsate 1s infinite;
+}
+
+/* Nascondi il bordo quando il mouse non ci passa più sopra */
+.sezione:not(:hover)::before {
+  opacity: 0;
+  transform: scaleX(0);
 }
 
 #mio-form {
   display: none;
 }
+
+
+
+
+
+
 
 #accesso{
   display: none;
@@ -160,10 +237,15 @@ input[type="submit"]:hover {
   .card {
     display: flex;
     flex-direction: row;
-    border: 4px solid gold;
+  border: 4px solid black;
     border-radius: 4px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+  }
+  
+  .card:hover{
+  	
+  	border: 4px solid gold;
   }
 
   .card-img {
@@ -291,6 +373,16 @@ th{
 td{
   border: 3px solid gold;
   font-size: 20px;
+}
+
+tr{
+	
+	font-size:80px;
+	transition: all 0.3s ease;
+}
+
+td:hover{
+	font-size:35px;
 }
 
 
@@ -577,6 +669,8 @@ div ul li {
   margin-bottom: 0px;
 }
 
+
+
 #form-admin{
   color: #333;
 }
@@ -624,7 +718,7 @@ div ul li {
   	color: gold;
   	overflow: hidden; /* nasconde il testo inizialmente */
   	white-space: nowrap; /* evita che il testo venga a capo */
-  	animation: typing 4s steps(100) 1s 1 normal both; /* animazione */
+  	animation: typing 2s steps(80) 1s 1 normal both; /* animazione */
   	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   	font-size: 50px;
   	
@@ -646,3 +740,18 @@ div ul li {
   	text-decoration: none;
 	margin-top: 25px;
   }
+  
+  
+  
+  
+  
+  
+ input:-webkit-autofill, input:-moz-autofill, input:-ms-autofill { 
+ background-color: #333; 
+ color: #fff; 
+ border: none; 
+ padding: 10px; 
+ -webkit-box-shadow: 0 0 0 30px #333 inset !important; 
+ -moz-box-shadow: 0 0 0 30px #333 inset !important; 
+ box-shadow: 0 0 0 30px #333 inset !important; 
+ }

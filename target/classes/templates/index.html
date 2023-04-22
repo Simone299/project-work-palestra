@@ -27,14 +27,14 @@
         <form id="form-admin" method="post" action="loginAdmin">
         <h2 class="dai">Area Staff</h2>
               <label class="dai" for="username">Username:</label>
-              <input type="text" id="username" name="username"><br>
+              <input class="dai2" type="text" id="username" name="username" style="background-color: white ;"><br>
   
               <label class="dai" for="password">Password:</label>
-              <input type="password" id="password" name="password"><br>
+              <input class="dai2" type="password" id="password" name="password" style="background-color: white ;"><br>
   
               <input type="submit" value="Accedi">
           </form>
-          <div    th:if="${errore3}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:red"></div>
+          <div    th:if="${errore3}"   th:text="'!! Verifica che il tuo nome utente e password siano corretti !! '" style="color:red; padding: 10px; text-align:center; font-size: 20px;"></div>
         </div>
 		
 		
@@ -130,7 +130,7 @@
     <input type="submit" value="Registrati">
 			
         </form>
-        <div    th:if="${errore}"   th:text="'Utente già esistente'" style="color:red"></div>
+        <div    th:if="${errore}"   th:text="'!!Utente già esistente!!'" style="color:red;  font-size:20px; margin-top: 10px;"></div>
         <div    th:if="${ceck}"   th:text="'Utente registrato! Effettua il login'" style="color:green"></div>
         <div    th:if="${errore2}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:#333;"></div>
 		<h2 id="testo2">Clicca i Manubri per registrarti</h2>
@@ -149,6 +149,7 @@
 
             <input type="submit" value="Accedi">
         </form>
+        <div    th:if="${errore}"   th:text="'!!Utente già esistente!!'" style="color:#333;  font-size:20px; margin-top: 10px;"></div>
         <div    th:if="${ceck}"   th:text="'Utente registrato! Effettua il login'" style="color:#333;"></div>
         <div    th:if="${errore2}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:red"></div>
         <!-- vedi login.htm  esercizio6 -->
