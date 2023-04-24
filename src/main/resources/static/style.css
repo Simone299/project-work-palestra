@@ -84,7 +84,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	border-radius: 5px;
 	border: 2px solid black;
 	margin-bottom: 10px;
-	background: transparent;
+	
 	border-bottom: 3px solid gold;
 	color:black;
 	font-size: 18px;
@@ -746,12 +746,4 @@ div ul li {
   
   
   
- input:-webkit-autofill, input:-moz-autofill, input:-ms-autofill { 
- background-color: #333; 
- color: #fff; 
- border: none; 
- padding: 10px; 
- -webkit-box-shadow: 0 0 0 30px #333 inset !important; 
- -moz-box-shadow: 0 0 0 30px #333 inset !important; 
- box-shadow: 0 0 0 30px #333 inset !important; 
- }
+ 

@@ -130,8 +130,8 @@
     <input type="submit" value="Registrati">
 			
         </form>
-        <div    th:if="${errore}"   th:text="'!!Utente già esistente!!'" style="color:red;  font-size:20px; margin-top: 10px;"></div>
-        <div    th:if="${ceck}"   th:text="'Utente registrato! Effettua il login'" style="color:green"></div>
+        <div    th:if="${errore}"   th:text="'!!Utente già esistente!!'" style="color:red;  font-size:20px; margin-top: 10px; margin-bottom: 10px;"></div>
+        <div    th:if="${ceck}"   th:text="'Utente registrato! Effettua il login'" style="color:green; font-size:20px;"></div>
         <div    th:if="${errore2}"   th:text="'! Verifica che il tuo nome utente e password siano corretti! '" style="color:#333;"></div>
 		<h2 id="testo2">Clicca i Manubri per registrarti</h2>
 	</section>
